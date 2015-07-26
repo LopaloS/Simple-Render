@@ -1,6 +1,9 @@
 #include "MeshLoader.h"
 #include <vector>
+#include "glm.hpp"
+
 using namespace std;
+using namespace glm;
 
 Mesh* MeshLoader::loadMesh(char* name)
 {
@@ -18,9 +21,8 @@ Mesh* MeshLoader::loadMeshObj(char* name)
 	}
 
 	vector<GLuint>* vertIndeces = new vector<GLuint>();
-	vector<float> tempVerts;
-	vector<float> tempUVs;
-	
+	vector<vec3> tempVerts;
+	vector<vec2> tempUVs;
 	
 	vector<GLuint> uvIndeces;
 	vector<GLuint> normalIndeces;
@@ -35,21 +37,17 @@ Mesh* MeshLoader::loadMeshObj(char* name)
 
 		if(strcmp(line, "v") == 0)
 		{
-			float x,y,z;
-			fscanf(file, "%f %f %f", &x, &y, &z);
-
-			tempVerts.push_back(x * 0.2f);
-			tempVerts.push_back(y * 0.2f);
-			tempVerts.push_back(z * 0.2f);
+			vec3 vertex;
+			fscanf(file, "%f %f %f", &vertex.x, &vertex.y, &vertex.z);
+			tempVerts.push_back(vertex);
 		}
 
 		if (strcmp(line, "vt") == 0)
 		{
-			float u,v;
-			fscanf(file, "%f %f",&u, &v);
+			vec2 uv;
+			fscanf(file, "%f %f",&uv.x, &uv.y);
 
-			tempUVs.push_back(u);
-			tempUVs.push_back(v);
+			tempUVs.push_back(uv);
 		}
 
 		if(strcmp(line, "f") == 0)
@@ -69,18 +67,15 @@ Mesh* MeshLoader::loadMeshObj(char* name)
 		}
 	}
 	
-	vector<float>* verts = new vector<float>();
-	vector<float>* UVs = new vector<float>();
+	vector<vec3>* verts = new vector<vec3>();
+	vector<vec2>* UVs = new vector<vec2>();
 	for (int i = 0; i < vertIndeces->size(); i++)
 	{
 		GLuint vertexIndex = vertIndeces->at(i);
-		verts->push_back(tempVerts[vertexIndex * 3]);
-		verts->push_back(tempVerts[vertexIndex * 3 + 1]);
-		verts->push_back(tempVerts[vertexIndex * 3 + 2]);
+		verts->push_back(tempVerts[vertexIndex]);
 
 		GLuint uvIndex = uvIndeces[i];
-		UVs->push_back(tempUVs[uvIndex * 2]);
-		UVs->push_back(tempUVs[uvIndex * 2 + 1]);
+		UVs->push_back(tempUVs[uvIndex]);
 	}
 
 	return new Mesh(verts, vertIndeces, UVs);

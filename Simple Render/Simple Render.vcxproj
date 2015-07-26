@@ -53,7 +53,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>D:\Simple Render\Simple Render\Libs\FreeImage_x32;D:\Simple Render\Simple Render\Libs\glfw-3.1.1.bin.WIN32\include\GLFW;D:\Simple Render\Simple Render\Libs\glew-1.12.0\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Simple Render\Simple Render\Libs\glm-0.9.6.3\glm\glm;D:\Simple Render\Simple Render\Libs\FreeImage_x32;D:\Simple Render\Simple Render\Libs\glfw-3.1.1.bin.WIN32\include\GLFW;D:\Simple Render\Simple Render\Libs\glew-1.12.0\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -72,7 +72,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>D:\Simple Render\Simple Render\Libs\glfw-3.1.1.bin.WIN32\include\GLFW;D:\Simple Render\Simple Render\Libs\glew-1.12.0\include;D:\Programs\FbxSDK2016\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Simple Render\Simple Render\Libs\glm-0.9.6.3\glm\glm;D:\Simple Render\Simple Render\Libs\glfw-3.1.1.bin.WIN32\include\GLFW;D:\Simple Render\Simple Render\Libs\glew-1.12.0\include;D:\Programs\FbxSDK2016\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -87,6 +87,7 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Camera.h" />
     <ClInclude Include="Material.h" />
     <ClInclude Include="Mesh.h" />
     <ClInclude Include="MeshLoader.h" />
@@ -94,6 +95,7 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Material.cpp" />
     <ClCompile Include="Mesh.cpp" />
     <ClCompile Include="MeshLoader.cpp" />

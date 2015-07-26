@@ -1,25 +1,26 @@
 #include "stdafx.h"
 #include "Mesh.h"
 
+
 Mesh::Mesh()
 {
 	
 }
 
-Mesh::Mesh(vector<float>* verts, vector<GLuint>* indeces, vector<float>* uvs, vector<float>* normals)
+Mesh::Mesh(vector<vec3>* verts, vector<GLuint>* indeces, vector<vec2>* uvs, vector<vec3>* normals)
 {
 	if(verts)
 	{
 		glGenBuffers(1, &vertexBufferID);
 		glBindBuffer(GL_ARRAY_BUFFER, vertexBufferID);
-		glBufferData(GL_ARRAY_BUFFER, verts->size() * sizeof(float), &verts->at(0), GL_STATIC_DRAW);
+		glBufferData(GL_ARRAY_BUFFER, verts->size() * sizeof(vec3), &verts->at(0), GL_STATIC_DRAW);
 	}
 
 	if(uvs)
 	{
 		glGenBuffers(1, &uvBufferID);
 		glBindBuffer(GL_ARRAY_BUFFER, uvBufferID);
-		glBufferData(GL_ARRAY_BUFFER, uvs->size() * sizeof(float), &uvs->at(0), GL_STATIC_DRAW);
+		glBufferData(GL_ARRAY_BUFFER, uvs->size() * sizeof(vec2), &uvs->at(0), GL_STATIC_DRAW);
 	}
 
 	if(indeces)
