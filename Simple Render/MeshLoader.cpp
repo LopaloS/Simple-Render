@@ -5,14 +5,14 @@
 using namespace std;
 using namespace glm;
 
-Mesh* MeshLoader::loadMesh(char* name)
+Mesh* MeshLoader::loadMesh(string name)
 {
 	return loadMeshObj(name);
 }
 
-Mesh* MeshLoader::loadMeshObj(char* name)
+Mesh* MeshLoader::loadMeshObj(string name)
 {
-	FILE* file = fopen(name, "r");
+	FILE* file = fopen(name.c_str(), "r");
 
 	if (!file)
 	{

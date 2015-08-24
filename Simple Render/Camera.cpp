@@ -1,12 +1,12 @@
+#include "stdafx.h"
 #include "Camera.h"
 #include <gtx/transform.hpp>
-#include "stdafx.h"
 
-Camera::Camera(GLFWwindow* _window, float _aspectRatio, vec2 _screenCenter)
+Camera::Camera(GLFWwindow* window, float aspectRatio, vec2 screenCenter)
 {
-	window = _window;
-	screenCenter = _screenCenter;
-	aspectRatio = _aspectRatio;
+	this->window = window;
+	this->screenCenter = screenCenter;
+	this->aspectRatio = aspectRatio;
 	speed = 5;
 	fov = 55;
 	position = vec3(0,0, -10);

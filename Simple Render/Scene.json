@@ -1,0 +1,16 @@
+[
+    {
+	"meshName": "Axe1.obj",
+	"materialName":"Shader.glsl",
+	"textureName":"Woodcutter-Axe.jpg",
+        "position": [1,5,1],
+        "rotation": [0,0,90]
+    },
+    {
+	"meshName": "Axe1.obj",
+	"materialName":"Shader.glsl",
+	"textureName":"Woodcutter-Axe.jpg",
+        "position": [1,0,1],
+        "rotation": [0,0,0]
+    }
+]

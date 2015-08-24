@@ -1,17 +1,14 @@
-#include "GL\glew.h"
+#include "stdafx.h"
 
 class Material
-	{
+{
 	public:
 		Material();
-		Material(char*, char*);
+		Material(string);
 
-		GLuint getShaderID();
-		GLuint getTextureID();
+		GLuint getID();
 
 	private:
-		GLuint shaderID;
-		GLuint textureID;
-		void loadShader(char*);
-		void loadTexture(char*);
-	};
+		GLuint id;
+		void loadShader(const char*);
+};

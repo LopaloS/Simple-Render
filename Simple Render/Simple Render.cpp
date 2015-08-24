@@ -1,12 +1,10 @@
-
 #include "stdafx.h"
-#include <GL/glew.h>
+//#include <GL/glew.h>
 #include <glfw3.h>
-#include "MeshLoader.h"
-#include "Material.h"
 #include "common.hpp"
 #include "Camera.h";
 #include "gtc\matrix_transform.hpp"
+#include "Scene.h"
 
 using namespace glm;
 
@@ -42,31 +40,16 @@ int main(void)
 
 	glClearColor(0.4f,0.5f,1.0f,1.0f);
 
-	MeshLoader* meshLoader = new MeshLoader();
-	Mesh* mesh = meshLoader->loadMesh("Axe1.obj");
-	Material material("Shader.glsl", "Woodcutter-Axe.jpg");
-
-	GLuint textureSamplerID = glGetUniformLocation(material.getShaderID(), "texture");
-	GLuint mvpMatrixID = glGetUniformLocation(material.getShaderID(), "mvp");
+	Scene* scene = new Scene("Scene.json"); 
+	
 	Camera camera(window, (float)windowWidth/windowHeight, vec2(windowWidth/2, windowHeight/2));
-	GLuint VertexArrayID;
-	glGenVertexArrays(1, &VertexArrayID);
-	glBindVertexArray(VertexArrayID);
-
-
 
 	while (glfwWindowShouldClose(window) == 0 && glfwGetKey(window, GLFW_KEY_ESCAPE) != GLFW_PRESS)
 	{
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-		glUseProgram(material.getShaderID());
-		glActiveTexture(GL_TEXTURE0);
-		glBindTexture(GL_TEXTURE_2D, material.getTextureID());
-		glUniform1d(textureSamplerID, 0);
-		glUniformMatrix4fv(mvpMatrixID, 1,GL_FALSE, &camera.GetViewProjMatrix()[0][0]);
-
-		if(mesh)
-			mesh->render();
+		scene->render(camera.GetViewProjMatrix());
+		
 		camera.Update();
 		glfwSwapBuffers(window);
 		glfwPollEvents();

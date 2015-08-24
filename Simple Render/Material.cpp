@@ -3,25 +3,19 @@
 #include "string"
 #include <fstream>
 #include <vector>
-#include "FreeImage.h"
 
-Material::Material(char* shaderName, char* textureName)
+
+Material::Material(string shaderName)
 {
-	loadShader(shaderName);
-	loadTexture(textureName);
+	loadShader(shaderName.c_str());
 }
 
-GLuint Material::getShaderID()
+GLuint Material::getID()
 {
-	return shaderID;
+	return id;
 }
 
-GLuint Material::getTextureID()
-{
-	return textureID;
-}
-
-void Material::loadShader(char* name)
+void Material::loadShader(const char* name)
 {
 	std::string vertName("vert");
 	vertName += name;
@@ -98,42 +92,21 @@ void Material::loadShader(char* name)
 
 	// Link the program
 	printf("Linking program\n");
-	shaderID = glCreateProgram();
-	glAttachShader(shaderID, VertexShaderID);
-	glAttachShader(shaderID, FragmentShaderID);
-	glLinkProgram(shaderID);
+	id = glCreateProgram();
+	glAttachShader(id, VertexShaderID);
+	glAttachShader(id, FragmentShaderID);
+	glLinkProgram(id);
 
 	// Check the program
-	glGetProgramiv(shaderID, GL_LINK_STATUS, &Result);
-	glGetProgramiv(shaderID, GL_INFO_LOG_LENGTH, &InfoLogLength);
+	glGetProgramiv(id, GL_LINK_STATUS, &Result);
+	glGetProgramiv(id, GL_INFO_LOG_LENGTH, &InfoLogLength);
 	if ( InfoLogLength > 0 )
 	{
 		std::vector<char> ProgramErrorMessage(InfoLogLength+1);
-		glGetProgramInfoLog(shaderID, InfoLogLength, NULL, &ProgramErrorMessage[0]);
+		glGetProgramInfoLog(id, InfoLogLength, NULL, &ProgramErrorMessage[0]);
 		printf("%s\n", &ProgramErrorMessage[0]);
 	}
 
 	glDeleteShader(VertexShaderID);
 	glDeleteShader(FragmentShaderID);
-}
-
-void Material::loadTexture(char* name)
-{
-	FIBITMAP* bitMap = NULL;
-	BYTE* textureData = NULL;
-
-	bitMap = FreeImage_Load(FIF_JPEG, name);
-	textureData = FreeImage_GetBits(bitMap);
-
-	unsigned pixel_size = FreeImage_GetBPP(bitMap);
-
-	GLuint width = FreeImage_GetWidth(bitMap);
-	GLuint height = FreeImage_GetHeight(bitMap);
-
-	glGenTextures(1, &textureID);
-	glBindTexture(GL_TEXTURE_2D, textureID);
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_BGR, GL_UNSIGNED_BYTE, textureData);
-
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);	
 }

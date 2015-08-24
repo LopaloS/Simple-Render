@@ -1,5 +1,6 @@
-#include "glm.hpp"
 #include <glfw3.h>
+#include "glm.hpp"
+
 using namespace glm;
 
 class Camera

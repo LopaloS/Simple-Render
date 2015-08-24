@@ -1,5 +1,4 @@
 #include "stdafx.h"
-#include "Mesh.h"
 
 
 Mesh::Mesh()
@@ -32,7 +31,7 @@ Mesh::Mesh(vector<vec3>* verts, vector<GLuint>* indeces, vector<vec2>* uvs, vect
 	}
 }
 
-void Mesh::render()
+void Mesh::draw()
 {
 	glEnableVertexAttribArray(0);
 	glBindBuffer(GL_ARRAY_BUFFER, vertexBufferID);

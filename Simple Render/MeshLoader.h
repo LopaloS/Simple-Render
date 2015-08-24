@@ -1,13 +1,12 @@
 #include "stdafx.h"
 #include "string"
-#include "Mesh.h"
 
 class MeshLoader
 {
 	public:
-		Mesh* loadMesh(char*);
+		Mesh* loadMesh(string);
 	private:
-		Mesh* loadMeshObj(char*);
+		Mesh* loadMeshObj(string);
 	};
 
 
