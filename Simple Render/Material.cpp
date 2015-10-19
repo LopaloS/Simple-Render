@@ -1,6 +1,5 @@
 #include "stdafx.h"
 #include "Material.h"
-#include "string"
 #include <fstream>
 #include <vector>
 
@@ -17,9 +16,9 @@ GLuint Material::getID()
 
 void Material::loadShader(const char* name)
 {
-	std::string vertName("vert");
+	string vertName("vert");
 	vertName += name;
-	std::string fragmentName("frag");
+	string fragmentName("frag");
 	fragmentName += name;
 
 	// Create the shaders
@@ -27,11 +26,12 @@ void Material::loadShader(const char* name)
 	GLuint FragmentShaderID = glCreateShader(GL_FRAGMENT_SHADER);
 
 	// Read the Vertex Shader code from the file
-	std::string vertexShaderCode;
-	std::ifstream VertexShaderStream(vertName, std::ios::in);
+	string vertexShaderCode;
+	string folder("Materials/");
+	ifstream VertexShaderStream(folder + vertName, ios::in);
 	if(VertexShaderStream.is_open())
 	{
-		std::string Line = "";
+		string Line = "";
 		while(getline(VertexShaderStream, Line))
 			vertexShaderCode += "\n" + Line;
 		VertexShaderStream.close();
@@ -44,10 +44,10 @@ void Material::loadShader(const char* name)
 	}
 
 	// Read the Fragment Shader code from the file
-	std::string FragmentShaderCode;
-	std::ifstream FragmentShaderStream(fragmentName, std::ios::in);
+	string FragmentShaderCode;
+	ifstream FragmentShaderStream(folder + fragmentName, ios::in);
 	if(FragmentShaderStream.is_open()){
-		std::string Line = "";
+		string Line = "";
 		while(getline(FragmentShaderStream, Line))
 			FragmentShaderCode += "\n" + Line;
 		FragmentShaderStream.close();
@@ -68,7 +68,7 @@ void Material::loadShader(const char* name)
 	glGetShaderiv(VertexShaderID, GL_INFO_LOG_LENGTH, &InfoLogLength);
 	if ( InfoLogLength > 0 )
 	{
-		std::vector<char> VertexShaderErrorMessage(InfoLogLength+1);
+		vector<char> VertexShaderErrorMessage(InfoLogLength+1);
 		glGetShaderInfoLog(VertexShaderID, InfoLogLength, NULL, &VertexShaderErrorMessage[0]);
 		printf("%s\n", &VertexShaderErrorMessage[0]);
 	}
@@ -84,7 +84,7 @@ void Material::loadShader(const char* name)
 	glGetShaderiv(FragmentShaderID, GL_INFO_LOG_LENGTH, &InfoLogLength);
 	if ( InfoLogLength > 0 )
 	{
-		std::vector<char> FragmentShaderErrorMessage(InfoLogLength+1);
+		vector<char> FragmentShaderErrorMessage(InfoLogLength+1);
 		glGetShaderInfoLog(FragmentShaderID, InfoLogLength, NULL, &FragmentShaderErrorMessage[0]);
 		printf("%s\n", &FragmentShaderErrorMessage[0]);
 	}
@@ -102,7 +102,7 @@ void Material::loadShader(const char* name)
 	glGetProgramiv(id, GL_INFO_LOG_LENGTH, &InfoLogLength);
 	if ( InfoLogLength > 0 )
 	{
-		std::vector<char> ProgramErrorMessage(InfoLogLength+1);
+		vector<char> ProgramErrorMessage(InfoLogLength+1);
 		glGetProgramInfoLog(id, InfoLogLength, NULL, &ProgramErrorMessage[0]);
 		printf("%s\n", &ProgramErrorMessage[0]);
 	}

@@ -1,16 +1,72 @@
 [
     {
-	"meshName": "Axe1.obj",
+	"meshName": "fireplace.obj",
 	"materialName":"Shader.glsl",
-	"textureName":"Woodcutter-Axe.jpg",
-        "position": [1,5,1],
-        "rotation": [0,0,90]
+	"textureName":"brick_medieval.png",
+        "position": [0,0,0],
+        "rotation": [0,0,0]
     },
-    {
-	"meshName": "Axe1.obj",
+	{
+	"meshName": "plants_inside.obj",
 	"materialName":"Shader.glsl",
-	"textureName":"Woodcutter-Axe.jpg",
-        "position": [1,0,1],
+	"textureName":"plant.png",
+        "position": [0,0,0],
+        "rotation": [0,0,0]
+    },
+	{
+	"meshName": "plants_outside.obj",
+	"materialName":"Shader.glsl",
+	"textureName":"plant.png",
+        "position": [0,0,0],
+        "rotation": [0,0,0]
+    },
+	{
+	"meshName": "roof.obj",
+	"materialName":"Shader.glsl",
+	"textureName":"roof.png",
+        "position": [0,0,0],
+        "rotation": [0,0,0]
+    },
+	{
+	"meshName": "roof_detail_inside.obj",
+	"materialName":"Shader.glsl",
+	"textureName":"roof.png",
+        "position": [0,0,0],
+        "rotation": [0,0,0]
+    },
+	{
+	"meshName": "roof_detail_outside.obj",
+	"materialName":"Shader.glsl",
+	"textureName":"roof.png",
+        "position": [0,0,0],
+        "rotation": [0,0,0]
+    },
+	{
+	"meshName": "walls.obj",
+	"materialName":"Shader.glsl",
+	"textureName":"wall.png",
+        "position": [0,0,0],
+        "rotation": [0,0,0]
+    },
+	{
+	"meshName": "windows.obj",
+	"materialName":"Shader.glsl",
+	"textureName":"window.png",
+        "position": [0,0,0],
+        "rotation": [0,0,0]
+    },
+	{
+	"meshName": "wood_planes.obj",
+	"materialName":"Shader.glsl",
+	"textureName":"wood_plane.png",
+        "position": [0,0,0],
+        "rotation": [0,0,0]
+    },
+	{
+	"meshName": "wood_planks.obj",
+	"materialName":"Shader.glsl",
+	"textureName":"wood_planks.png",
+        "position": [0,0,0],
         "rotation": [0,0,0]
     }
 ]

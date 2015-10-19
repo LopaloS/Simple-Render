@@ -1,6 +1,6 @@
 #include "Libs\jsoncpp\json\json.h"
 #include "Material.h"
-#include "SceneObject.h"
+#include "SkyboxObject.h"
 #include "MeshLoader.h"
 
 using namespace Json;
@@ -9,7 +9,7 @@ class Scene
 {
 public:
 	Scene(char* pathToData);
-	void render(mat4 viewProj);
+	void render(mat4 viewMat, mat4 projMat);
 
 
 private:
@@ -18,9 +18,13 @@ private:
 	map<string, GLint> materialMap;
 	map<string, GLint> texturesMap;
 
+	SceneObject* cubeMapObject;
+
 	MeshLoader* meshLoader;
 
 	Mesh* getMesh(string);
 	GLuint getMaterialID(string);
 	GLuint getTextureID(string);
+	
+	void createCubeMapObj();
 };

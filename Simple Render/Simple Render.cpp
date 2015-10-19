@@ -8,8 +8,8 @@
 
 using namespace glm;
 
-#define windowWidth 1024
-#define windowHeight 768
+#define windowWidth 1280
+#define windowHeight 720
 
 GLFWwindow* window;
 
@@ -36,6 +36,7 @@ int main(void)
 	glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 
 	glEnable(GL_DEPTH_TEST);
+	glDepthFunc(GL_LEQUAL); 
 	glEnable(GL_CULL_FACE);
 
 	glClearColor(0.4f,0.5f,1.0f,1.0f);
@@ -48,7 +49,7 @@ int main(void)
 	{
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-		scene->render(camera.GetViewProjMatrix());
+		scene->render(camera.GetViewMatrix(), camera.GetProjMatrix());
 		
 		camera.Update();
 		glfwSwapBuffers(window);

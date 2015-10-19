@@ -30,6 +30,8 @@ Scene::Scene(char* pathToData)
 		SceneObject sceneObject(tempMesh, tempMaterialID, tempTextureID, transformMat);
 		sceneObjects.push_back(sceneObject);
 	}
+
+	createCubeMapObj();
 }
 
 Mesh* Scene::getMesh(string name)
@@ -59,10 +61,64 @@ GLuint Scene::getTextureID(string name)
 	return texturesMap[name];
 }
 
-void Scene::render(mat4 viewProj)
+void Scene::createCubeMapObj()
 {
+	vector<vec3>* vertices = new vector<vec3>();
+
+	vertices->push_back(vec3(-1.0f,  1.0f, -1.0f));
+	vertices->push_back(vec3(-1.0f, -1.0f, -1.0f));
+	vertices->push_back(vec3( 1.0f, -1.0f, -1.0f));
+	vertices->push_back(vec3( 1.0f, -1.0f, -1.0f));
+	vertices->push_back(vec3( 1.0f,  1.0f, -1.0f));
+	vertices->push_back(vec3(-1.0f,  1.0f, -1.0f));
+
+	vertices->push_back(vec3(-1.0f, -1.0f,  1.0f));
+	vertices->push_back(vec3(-1.0f, -1.0f, -1.0f));
+	vertices->push_back(vec3(-1.0f,  1.0f, -1.0f));
+	vertices->push_back(vec3(-1.0f,  1.0f, -1.0f));
+	vertices->push_back(vec3(-1.0f,  1.0f,  1.0f));
+	vertices->push_back(vec3(-1.0f, -1.0f,  1.0f));
+
+	vertices->push_back(vec3( 1.0f, -1.0f, -1.0f));
+	vertices->push_back(vec3( 1.0f, -1.0f,  1.0f));
+	vertices->push_back(vec3( 1.0f,  1.0f,  1.0f));
+	vertices->push_back(vec3( 1.0f,  1.0f,  1.0f));
+	vertices->push_back(vec3( 1.0f,  1.0f, -1.0f));
+	vertices->push_back(vec3( 1.0f, -1.0f, -1.0f));
+
+	vertices->push_back(vec3(-1.0f, -1.0f,  1.0f));
+	vertices->push_back(vec3(-1.0f,  1.0f,  1.0f));
+	vertices->push_back(vec3( 1.0f,  1.0f,  1.0f));
+	vertices->push_back(vec3( 1.0f,  1.0f,  1.0f));
+	vertices->push_back(vec3( 1.0f, -1.0f,  1.0f));
+	vertices->push_back(vec3(-1.0f, -1.0f,  1.0f));
+
+	vertices->push_back(vec3(-1.0f,  1.0f, -1.0f));
+	vertices->push_back(vec3( 1.0f,  1.0f, -1.0f));
+	vertices->push_back(vec3( 1.0f,  1.0f,  1.0f));
+	vertices->push_back(vec3( 1.0f,  1.0f,  1.0f));
+	vertices->push_back(vec3(-1.0f,  1.0f,  1.0f));
+	vertices->push_back(vec3(-1.0f,  1.0f, -1.0f));
+
+	vertices->push_back(vec3(-1.0f, -1.0f, -1.0f));
+	vertices->push_back(vec3(-1.0f, -1.0f,  1.0f));
+	vertices->push_back(vec3( 1.0f, -1.0f, -1.0f));
+	vertices->push_back(vec3( 1.0f, -1.0f, -1.0f));
+	vertices->push_back(vec3(-1.0f, -1.0f,  1.0f));
+	vertices->push_back(vec3( 1.0f, -1.0f,  1.0f));
+
+	Mesh* mesh = new Mesh(vertices, NULL, NULL);
+	Material material("Skybox.glsl");
+	CubeMap cubemap;
+	cubeMapObject = new SkyboxObject(mesh, material.getID(), cubemap.getID());
+}
+
+void Scene::render(mat4 viewMat, mat4 projMat)
+{
+	cubeMapObject->render(projMat * mat4(mat3(viewMat)));
+	
 	for(vector<SceneObject>::iterator it = sceneObjects.begin(); it != sceneObjects.end(); it++)
 	{
-		it->render(viewProj);
+		it->render(projMat * viewMat);
 	}
 }

@@ -8,10 +8,12 @@ class Camera
 	public:
 		Camera(GLFWwindow*,float, vec2);
 		void Update();
-		mat4 GetViewProjMatrix();
+		mat4 GetViewMatrix();
+		mat4 GetProjMatrix();
 	private:
 		GLFWwindow* window;
-		mat4 viewProjMatrix;
+		mat4 viewMatrix;
+		mat4 projMatrix;
 
 		vec3 position;
 		vec2 rotation;

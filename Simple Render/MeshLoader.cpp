@@ -12,7 +12,8 @@ Mesh* MeshLoader::loadMesh(string name)
 
 Mesh* MeshLoader::loadMeshObj(string name)
 {
-	FILE* file = fopen(name.c_str(), "r");
+	string folder("Meshes/");
+	FILE* file = fopen((folder + name).c_str(), "r");
 
 	if (!file)
 	{

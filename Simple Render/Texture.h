@@ -3,8 +3,12 @@
 class Texture
 {
 	public:
-		Texture(string);
+		Texture();
+		Texture(string name);
 		GLuint getID();
-	private:
+	protected:
+		GLuint width;
+		GLuint height;
 		GLuint id;
+		BYTE* load(string name);
 };

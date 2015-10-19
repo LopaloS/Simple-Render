@@ -1,0 +1,86 @@
+[
+    {
+	"meshName": "Roof.obj",
+	"materialName":"Shader.glsl",
+	"textureName":"Human_props_texture_high.png",
+        "position": [0,0,0],
+        "rotation": [0,0,180]
+    },
+	{
+	"meshName": "Tree_Log_1.obj",
+	"materialName":"Shader.glsl",
+	"textureName":"Nature_Textures_1.png",
+        "position": [5,1,-20],
+        "rotation": [0,0,180]
+    },
+	{
+	"meshName": "1_Pine_2.obj",
+	"materialName":"Shader.glsl",
+	"textureName":"Nature_leaves_2.png",
+        "position": [5,1,-20],
+        "rotation": [0,0,180]
+    },
+	{
+	"meshName": "First_floor.obj",
+	"materialName":"Shader.glsl",
+	"textureName":"Human_props_texture_high.png",
+        "position": [0,0,0],
+        "rotation": [0,0,180]
+    },
+	{
+	"meshName": "Stairs_a.obj",
+	"materialName":"Shader.glsl",
+	"textureName":"Human_props_texture_high.png",
+        "position": [0,0,-9.7],
+        "rotation": [0,0,180]
+    },
+	{
+	"meshName": "Window_a.obj",
+	"materialName":"Shader.glsl",
+	"textureName":"Human_props_texture_high.png",
+        "position": [0,1,10],
+        "rotation": [0,90,180]
+    },
+	{
+	"meshName": "Brown_bed.obj",
+	"materialName":"Shader.glsl",
+	"textureName":"Human_props_texture_high.png",
+        "position": [0,1,0],
+        "rotation": [0,0,180]
+    },
+	{
+	"meshName": "GuardRobe.obj",
+	"materialName":"Shader.glsl",
+	"textureName":"Human_props_texture_high.png",
+        "position": [0,1,-7],
+        "rotation": [0,180,180]
+    },
+	{
+	"meshName": "Chair_3.obj",
+	"materialName":"Shader.glsl",
+	"textureName":"Human_props_texture_high.png",
+        "position": [0,1,-5],
+        "rotation": [0,0,180]
+    },
+	{
+	"meshName": "Small_desk.obj",
+	"materialName":"Shader.glsl",
+	"textureName":"Human_props_texture_high.png",
+        "position": [2.5,1,-4],
+        "rotation": [0,0,180]
+    },
+	{
+	"meshName": "Small_table_hold_2.obj",
+	"materialName":"Shader.glsl",
+	"textureName":"Human_props_texture_high.png",
+        "position": [-2.45,1,-4],
+        "rotation": [0,0,180]
+    },
+	{
+	"meshName": "Small_table_top_1.obj",
+	"materialName":"Shader.glsl",
+	"textureName":"Human_props_texture_high.png",
+        "position": [-2.45,1,-4],
+        "rotation": [0,0,180]
+    }
+]
