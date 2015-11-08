@@ -9,14 +9,17 @@ class Mesh
 {
 	public:
 		Mesh();
-		Mesh(vector<vec3>* verts, vector<GLuint>* indeces = NULL, vector<vec2>* uvs = NULL, vector<vec3>* normals = NULL);
+		Mesh(vector<vec3>* verts, vector<vec2>* uvs = NULL, vector<vec3>* normals = NULL);
 
 		void draw();
 	private:
 		
-		GLuint indexBufferSize;
+		GLuint vertexCount;
 
 		GLuint vertexBufferID;
 		GLuint uvBufferID;
-		GLuint indexBufferID;
+		GLuint normalBufferID;
+		GLuint tangentBufferID;
+
+		void calcTangents(vector<vec3>* verts, vector<vec2>* uvs);
 };

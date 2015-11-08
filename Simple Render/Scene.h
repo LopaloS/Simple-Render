@@ -18,7 +18,7 @@ private:
 	map<string, GLint> materialMap;
 	map<string, GLint> texturesMap;
 
-	SceneObject* cubeMapObject;
+	SkyboxObject* cubeMapObject;
 
 	MeshLoader* meshLoader;
 

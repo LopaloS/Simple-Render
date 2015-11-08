@@ -21,10 +21,11 @@ Mesh* MeshLoader::loadMeshObj(string name)
 		return NULL;
 	}
 
-	vector<GLuint>* vertIndeces = new vector<GLuint>();
 	vector<vec3> tempVerts;
 	vector<vec2> tempUVs;
+	vector<vec3> tempNormals;
 	
+	vector<GLuint> vertIndeces;
 	vector<GLuint> uvIndeces;
 	vector<GLuint> normalIndeces;
 
@@ -51,6 +52,13 @@ Mesh* MeshLoader::loadMeshObj(string name)
 			tempUVs.push_back(uv);
 		}
 
+		if(strcmp(line, "vn") == 0)
+		{
+			vec3 normal;
+			fscanf(file, "%f %f %f", &normal.x, &normal.y, &normal.z);
+			tempNormals.push_back(normal);
+		}
+
 		if(strcmp(line, "f") == 0)
 		{
 			GLuint v1, v2, v3;
@@ -58,27 +66,36 @@ Mesh* MeshLoader::loadMeshObj(string name)
 			GLuint n1, n2, n3;
 
 			fscanf(file, "%u/%u/%u %u/%u/%u %u/%u/%u", &v1, &uv1, &n1, &v2, &uv2, &n2, &v3, &uv3, &n3);
-			vertIndeces->push_back(v1 - 1);
-			vertIndeces->push_back(v2 - 1);
-			vertIndeces->push_back(v3 - 1);
+			vertIndeces.push_back(v1 - 1);
+			vertIndeces.push_back(v2 - 1);
+			vertIndeces.push_back(v3 - 1);
 
 			uvIndeces.push_back(uv1 - 1);
 			uvIndeces.push_back(uv2 - 1);
 			uvIndeces.push_back(uv3 - 1);
+
+			normalIndeces.push_back(n1 - 1);
+			normalIndeces.push_back(n2 - 1);
+			normalIndeces.push_back(n3 - 1);
 		}
 	}
 	
 	vector<vec3>* verts = new vector<vec3>();
 	vector<vec2>* UVs = new vector<vec2>();
-	for (int i = 0; i < vertIndeces->size(); i++)
+	vector<vec3>* normals = new vector<vec3>();
+
+	for (int i = 0; i < vertIndeces.size(); i++)
 	{
-		GLuint vertexIndex = vertIndeces->at(i);
+		GLuint vertexIndex = vertIndeces[i];
 		verts->push_back(tempVerts[vertexIndex]);
 
 		GLuint uvIndex = uvIndeces[i];
 		UVs->push_back(tempUVs[uvIndex]);
+
+		GLuint normalIndex = normalIndeces[i];
+		normals->push_back(tempNormals[normalIndex]);
 	}
 
-	return new Mesh(verts, vertIndeces, UVs);
+	return new Mesh(verts, UVs, normals);
 }
 

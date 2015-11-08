@@ -4,15 +4,21 @@ class SceneObject
 {
 public:
 	SceneObject(Mesh* mesh, GLuint shaderID, GLuint TextureID, mat4 transMat);
-	virtual void render(mat4 viewProj);
+	void setNormalMap( GLuint normalMapID);
+	virtual void render(mat4 viewProj, vec3 lightDir);
 
 protected:
 	Mesh* mesh;
 	GLuint shaderID;
 	GLuint textureID;
+	GLuint normalMapID;
 
 	GLuint textureSamplerID;
-	GLuint mvpMatrixID;
+	GLuint normalSamplerID;
+	GLuint viewProjMatrixID;
+	GLuint transMatrixID;
+	GLuint lightDirID;
+
 private:
 	mat4 transMat;
 };

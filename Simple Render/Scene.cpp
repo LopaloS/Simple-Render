@@ -2,6 +2,7 @@
 #include <fstream>
 #include <gtx/transform.hpp>
 #include <gtx/euler_angles.hpp>
+#include <glfw3.h>
 
 Scene::Scene(char* pathToData)
 {
@@ -26,8 +27,11 @@ Scene::Scene(char* pathToData)
 		Mesh* tempMesh = getMesh((*iter)["meshName"].asString());
 		GLuint tempMaterialID = getMaterialID((*iter)["materialName"].asCString());
 		GLuint tempTextureID = getTextureID ((*iter)["textureName"].asCString());
-
+		Value normalMapValue = (*iter)["normalMapName"];
+		
 		SceneObject sceneObject(tempMesh, tempMaterialID, tempTextureID, transformMat);
+		if(normalMapValue.type())
+			sceneObject.setNormalMap(getTextureID(normalMapValue.asCString()));
 		sceneObjects.push_back(sceneObject);
 	}
 
@@ -119,6 +123,6 @@ void Scene::render(mat4 viewMat, mat4 projMat)
 	
 	for(vector<SceneObject>::iterator it = sceneObjects.begin(); it != sceneObjects.end(); it++)
 	{
-		it->render(projMat * viewMat);
+	it->render(projMat * viewMat, normalize(vec3(sin(glfwGetTime()),0,cos(glfwGetTime()))));
 	}
 }

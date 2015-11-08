@@ -1,8 +1,9 @@
 [
     {
 	"meshName": "fireplace.obj",
-	"materialName":"Shader.glsl",
+	"materialName":"Normal.glsl",
 	"textureName":"brick_medieval.png",
+	"normalMapName": "brick_medieval_NRM.png",
         "position": [0,0,0],
         "rotation": [0,0,0]
     },
@@ -68,5 +69,166 @@
 	"textureName":"wood_planks.png",
         "position": [0,0,0],
         "rotation": [0,0,0]
+    },
+	{
+	"meshName": "landscape.obj",
+	"materialName":"Shader.glsl",
+	"textureName":"grass2.png",
+        "position": [0,-1.5,0],
+        "rotation": [0,0,0]
+    },
+	{
+	"meshName": "river.obj",
+	"materialName":"Shader.glsl",
+	"textureName":"water.png",
+        "position": [0,-1.5,3],
+        "rotation": [0,0,0]
+    },
+	{
+	"meshName": "trunk.obj",
+	"materialName":"Shader.glsl",
+	"textureName":"trunk.png",
+        "position": [10,0,7],
+        "rotation": [0,88,0]
+    },
+	{
+	"meshName": "leaves.obj",
+	"materialName":"Shader.glsl",
+	"textureName":"leaves.png",
+        "position": [10,0,7],
+        "rotation": [0,88,0]
+    },
+	{
+	"meshName": "leaves1.obj",
+	"materialName":"Shader.glsl",
+	"textureName":"leaves1.png",
+        "position": [10,0,7],
+        "rotation": [0,88,0]
+    },
+	{
+	"meshName": "trunk.obj",
+	"materialName":"Shader.glsl",
+	"textureName":"trunk.png",
+        "position": [8,0,12],
+        "rotation": [0,105,0]
+    },
+	{
+	"meshName": "leaves.obj",
+	"materialName":"Shader.glsl",
+	"textureName":"leaves.png",
+        "position": [8,0,12],
+        "rotation": [0,105,0]
+    },
+	{
+	"meshName": "leaves1.obj",
+	"materialName":"Shader.glsl",
+	"textureName":"leaves1.png",
+        "position": [8,0,12],
+        "rotation": [0,105,0]
+    },
+	{
+	"meshName": "trunk.obj",
+	"materialName":"Shader.glsl",
+	"textureName":"trunk.png",
+        "position": [5,0,12],
+        "rotation": [0,316,0]
+    },
+	{
+	"meshName": "leaves.obj",
+	"materialName":"Shader.glsl",
+	"textureName":"leaves.png",
+        "position": [5,0,12],
+        "rotation": [0,316,0]
+    },
+	{
+	"meshName": "leaves1.obj",
+	"materialName":"Shader.glsl",
+	"textureName":"leaves1.png",
+        "position": [5,0,12],
+        "rotation": [0,316,0]
+    },
+	{
+	"meshName": "trunk.obj",
+	"materialName":"Shader.glsl",
+	"textureName":"trunk.png",
+        "position": [0,0,-12],
+        "rotation": [0,273,0]
+    },
+	{
+	"meshName": "leaves.obj",
+	"materialName":"Shader.glsl",
+	"textureName":"leaves.png",
+        "position": [0,0,-12],
+        "rotation": [0,273,0]
+    },
+	{
+	"meshName": "leaves1.obj",
+	"materialName":"Shader.glsl",
+	"textureName":"leaves1.png",
+        "position": [0,0,-12],
+        "rotation": [0,273,0]
+    },
+	{
+	"meshName": "trunk.obj",
+	"materialName":"Shader.glsl",
+	"textureName":"trunk.png",
+        "position": [-9,0,-11],
+        "rotation": [0,180,0]
+    },
+	{
+	"meshName": "leaves.obj",
+	"materialName":"Shader.glsl",
+	"textureName":"leaves.png",
+        "position": [-9,0,-11],
+        "rotation": [0,180,0]
+    },
+	{
+	"meshName": "leaves1.obj",
+	"materialName":"Shader.glsl",
+	"textureName":"leaves1.png",
+        "position": [-9,0,-11],
+        "rotation": [0,180,0]
+    },
+	{
+	"meshName": "trunk.obj",
+	"materialName":"Shader.glsl",
+	"textureName":"trunk.png",
+        "position": [-11,0,12],
+        "rotation": [0,55,0]
+    },
+	{
+	"meshName": "leaves.obj",
+	"materialName":"Shader.glsl",
+	"textureName":"leaves.png",
+        "position": [-11,0,12],
+        "rotation": [0,55,0]
+    },
+	{
+	"meshName": "leaves1.obj",
+	"materialName":"Shader.glsl",
+	"textureName":"leaves1.png",
+        "position": [-11,0,12],
+        "rotation": [0,55,0]
+    },
+	{
+	"meshName": "trunk.obj",
+	"materialName":"Shader.glsl",
+	"textureName":"trunk.png",
+        "position": [-8,0,0],
+        "rotation": [0,12,0]
+    },
+	{
+	"meshName": "leaves.obj",
+	"materialName":"Shader.glsl",
+	"textureName":"leaves.png",
+        "position": [-8,0,0],
+        "rotation": [0,12,0]
+    },
+	{
+	"meshName": "leaves1.obj",
+	"materialName":"Shader.glsl",
+	"textureName":"leaves1.png",
+        "position": [-8,0,0],
+        "rotation": [0,12,0]
     }
 ]

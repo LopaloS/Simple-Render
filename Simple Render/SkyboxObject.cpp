@@ -11,7 +11,7 @@ void SkyboxObject::render(mat4 viewProj)
 	glBindTexture(GL_TEXTURE_CUBE_MAP, textureID);
 	glUniform1i(textureSamplerID, 0);
 
-	glUniformMatrix4fv(mvpMatrixID, 1,GL_FALSE, &viewProj[0][0]);
+	glUniformMatrix4fv(viewProjMatrixID, 1,GL_FALSE, &viewProj[0][0]);
 
 	mesh->draw();
 }
