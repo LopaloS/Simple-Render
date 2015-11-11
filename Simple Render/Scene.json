@@ -1,232 +1,243 @@
 [
     {
 	"meshName": "fireplace.obj",
-	"materialName":"Normal.glsl",
+	"materialName":"SpecNormal.glsl",
 	"textureName":"brick_medieval.png",
 	"normalMapName": "brick_medieval_NRM.png",
+	"specularMapName": "brick_medieval_spec.png",
         "position": [0,0,0],
         "rotation": [0,0,0]
     },
 	{
 	"meshName": "plants_inside.obj",
-	"materialName":"Shader.glsl",
+	"materialName":"Normal.glsl",
 	"textureName":"plant.png",
+	"normalMapName": "plant_NRM.png",
         "position": [0,0,0],
         "rotation": [0,0,0]
     },
 	{
 	"meshName": "plants_outside.obj",
-	"materialName":"Shader.glsl",
+	"materialName":"Normal.glsl",
 	"textureName":"plant.png",
+	"normalMapName": "plant_NRM.png",
         "position": [0,0,0],
         "rotation": [0,0,0]
     },
 	{
 	"meshName": "roof.obj",
-	"materialName":"Shader.glsl",
+	"materialName":"Normal.glsl",
 	"textureName":"roof.png",
+	"normalMapName": "roof_NRM.png",
         "position": [0,0,0],
         "rotation": [0,0,0]
     },
 	{
 	"meshName": "roof_detail_inside.obj",
-	"materialName":"Shader.glsl",
+	"materialName":"Normal.glsl",
 	"textureName":"roof.png",
+	"normalMapName": "roof_NRM.png",
         "position": [0,0,0],
         "rotation": [0,0,0]
     },
 	{
 	"meshName": "roof_detail_outside.obj",
-	"materialName":"Shader.glsl",
+	"materialName":"Normal.glsl",
 	"textureName":"roof.png",
+	"normalMapName": "roof_NRM.png",
         "position": [0,0,0],
         "rotation": [0,0,0]
     },
 	{
 	"meshName": "walls.obj",
-	"materialName":"Shader.glsl",
+	"materialName":"Normal.glsl",
 	"textureName":"wall.png",
+	"normalMapName": "wall_NRM.png",
         "position": [0,0,0],
         "rotation": [0,0,0]
     },
 	{
 	"meshName": "windows.obj",
-	"materialName":"Shader.glsl",
+	"materialName":"SpecNormal.glsl",
 	"textureName":"window.png",
+	"normalMapName": "window_NRM.png",
+	"specularMapName": "window_SPEC.png",
         "position": [0,0,0],
         "rotation": [0,0,0]
     },
 	{
 	"meshName": "wood_planes.obj",
-	"materialName":"Shader.glsl",
+	"materialName":"Normal.glsl",
 	"textureName":"wood_plane.png",
+	"normalMapName": "wood_plane_NRM.png",
         "position": [0,0,0],
         "rotation": [0,0,0]
     },
 	{
 	"meshName": "wood_planks.obj",
-	"materialName":"Shader.glsl",
+	"materialName":"Normal.glsl",
 	"textureName":"wood_planks.png",
+	"normalMapName": "wood_planks_NRM.png",
         "position": [0,0,0],
         "rotation": [0,0,0]
     },
 	{
 	"meshName": "landscape.obj",
-	"materialName":"Shader.glsl",
-	"textureName":"grass2.png",
+	"materialName":"tiledDefault.glsl",
+	"textureName":"grass.png",
         "position": [0,-1.5,0],
         "rotation": [0,0,0]
     },
 	{
 	"meshName": "river.obj",
-	"materialName":"Shader.glsl",
+	"materialName":"Default.glsl",
 	"textureName":"water.png",
         "position": [0,-1.5,3],
         "rotation": [0,0,0]
     },
 	{
 	"meshName": "trunk.obj",
-	"materialName":"Shader.glsl",
+	"materialName":"Default.glsl",
 	"textureName":"trunk.png",
         "position": [10,0,7],
         "rotation": [0,88,0]
     },
 	{
 	"meshName": "leaves.obj",
-	"materialName":"Shader.glsl",
+	"materialName":"Default.glsl",
 	"textureName":"leaves.png",
         "position": [10,0,7],
         "rotation": [0,88,0]
     },
 	{
 	"meshName": "leaves1.obj",
-	"materialName":"Shader.glsl",
+	"materialName":"Default.glsl",
 	"textureName":"leaves1.png",
         "position": [10,0,7],
         "rotation": [0,88,0]
     },
 	{
 	"meshName": "trunk.obj",
-	"materialName":"Shader.glsl",
+	"materialName":"Default.glsl",
 	"textureName":"trunk.png",
         "position": [8,0,12],
         "rotation": [0,105,0]
     },
 	{
 	"meshName": "leaves.obj",
-	"materialName":"Shader.glsl",
+	"materialName":"Default.glsl",
 	"textureName":"leaves.png",
         "position": [8,0,12],
         "rotation": [0,105,0]
     },
 	{
 	"meshName": "leaves1.obj",
-	"materialName":"Shader.glsl",
+	"materialName":"Default.glsl",
 	"textureName":"leaves1.png",
         "position": [8,0,12],
         "rotation": [0,105,0]
     },
 	{
 	"meshName": "trunk.obj",
-	"materialName":"Shader.glsl",
+	"materialName":"Default.glsl",
 	"textureName":"trunk.png",
         "position": [5,0,12],
         "rotation": [0,316,0]
     },
 	{
 	"meshName": "leaves.obj",
-	"materialName":"Shader.glsl",
+	"materialName":"Default.glsl",
 	"textureName":"leaves.png",
         "position": [5,0,12],
         "rotation": [0,316,0]
     },
 	{
 	"meshName": "leaves1.obj",
-	"materialName":"Shader.glsl",
+	"materialName":"Default.glsl",
 	"textureName":"leaves1.png",
         "position": [5,0,12],
         "rotation": [0,316,0]
     },
 	{
 	"meshName": "trunk.obj",
-	"materialName":"Shader.glsl",
+	"materialName":"Default.glsl",
 	"textureName":"trunk.png",
         "position": [0,0,-12],
         "rotation": [0,273,0]
     },
 	{
 	"meshName": "leaves.obj",
-	"materialName":"Shader.glsl",
+	"materialName":"Default.glsl",
 	"textureName":"leaves.png",
         "position": [0,0,-12],
         "rotation": [0,273,0]
     },
 	{
 	"meshName": "leaves1.obj",
-	"materialName":"Shader.glsl",
+	"materialName":"Default.glsl",
 	"textureName":"leaves1.png",
         "position": [0,0,-12],
         "rotation": [0,273,0]
     },
 	{
 	"meshName": "trunk.obj",
-	"materialName":"Shader.glsl",
+	"materialName":"Default.glsl",
 	"textureName":"trunk.png",
         "position": [-9,0,-11],
         "rotation": [0,180,0]
     },
 	{
 	"meshName": "leaves.obj",
-	"materialName":"Shader.glsl",
+	"materialName":"Default.glsl",
 	"textureName":"leaves.png",
         "position": [-9,0,-11],
         "rotation": [0,180,0]
     },
 	{
 	"meshName": "leaves1.obj",
-	"materialName":"Shader.glsl",
+	"materialName":"Default.glsl",
 	"textureName":"leaves1.png",
         "position": [-9,0,-11],
         "rotation": [0,180,0]
     },
 	{
 	"meshName": "trunk.obj",
-	"materialName":"Shader.glsl",
+	"materialName":"Default.glsl",
 	"textureName":"trunk.png",
         "position": [-11,0,12],
         "rotation": [0,55,0]
     },
 	{
 	"meshName": "leaves.obj",
-	"materialName":"Shader.glsl",
+	"materialName":"Default.glsl",
 	"textureName":"leaves.png",
         "position": [-11,0,12],
         "rotation": [0,55,0]
     },
 	{
 	"meshName": "leaves1.obj",
-	"materialName":"Shader.glsl",
+	"materialName":"Default.glsl",
 	"textureName":"leaves1.png",
         "position": [-11,0,12],
         "rotation": [0,55,0]
     },
 	{
 	"meshName": "trunk.obj",
-	"materialName":"Shader.glsl",
+	"materialName":"Default.glsl",
 	"textureName":"trunk.png",
         "position": [-8,0,0],
         "rotation": [0,12,0]
     },
 	{
 	"meshName": "leaves.obj",
-	"materialName":"Shader.glsl",
+	"materialName":"Default.glsl",
 	"textureName":"leaves.png",
         "position": [-8,0,0],
         "rotation": [0,12,0]
     },
 	{
 	"meshName": "leaves1.obj",
-	"materialName":"Shader.glsl",
+	"materialName":"Default.glsl",
 	"textureName":"leaves1.png",
         "position": [-8,0,0],
         "rotation": [0,12,0]

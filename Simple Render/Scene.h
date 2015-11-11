@@ -9,7 +9,7 @@ class Scene
 {
 public:
 	Scene(char* pathToData);
-	void render(mat4 viewMat, mat4 projMat);
+	void render(mat4 viewMat, mat4 projMat, vec3 viewPos);
 
 
 private:

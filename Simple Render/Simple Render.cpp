@@ -49,9 +49,9 @@ int main(void)
 	{
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-		scene->render(camera.GetViewMatrix(), camera.GetProjMatrix());
+		scene->render(camera.getViewMatrix(), camera.getProjMatrix(), camera.getPosition());
 		
-		camera.Update();
+		camera.update();
 		glfwSwapBuffers(window);
 		glfwPollEvents();
 	}

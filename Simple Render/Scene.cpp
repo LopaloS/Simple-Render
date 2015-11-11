@@ -28,10 +28,14 @@ Scene::Scene(char* pathToData)
 		GLuint tempMaterialID = getMaterialID((*iter)["materialName"].asCString());
 		GLuint tempTextureID = getTextureID ((*iter)["textureName"].asCString());
 		Value normalMapValue = (*iter)["normalMapName"];
+		Value specularMapValue = (*iter)["specularMapName"];
 		
 		SceneObject sceneObject(tempMesh, tempMaterialID, tempTextureID, transformMat);
 		if(normalMapValue.type())
 			sceneObject.setNormalMap(getTextureID(normalMapValue.asCString()));
+		if(specularMapValue.type())
+			sceneObject.setSpecularMap(getTextureID(specularMapValue.asString()));
+
 		sceneObjects.push_back(sceneObject);
 	}
 
@@ -117,12 +121,12 @@ void Scene::createCubeMapObj()
 	cubeMapObject = new SkyboxObject(mesh, material.getID(), cubemap.getID());
 }
 
-void Scene::render(mat4 viewMat, mat4 projMat)
+void Scene::render(mat4 viewMat, mat4 projMat, vec3 viewPos)
 {
 	cubeMapObject->render(projMat * mat4(mat3(viewMat)));
 	
 	for(vector<SceneObject>::iterator it = sceneObjects.begin(); it != sceneObjects.end(); it++)
 	{
-	it->render(projMat * viewMat, normalize(vec3(sin(glfwGetTime()),0,cos(glfwGetTime()))));
+		it->render(projMat * viewMat, normalize(vec3(sin(glfwGetTime()),0,cos(glfwGetTime()))), viewPos);
 	}
 }

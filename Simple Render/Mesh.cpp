@@ -18,7 +18,6 @@ Mesh::Mesh(vector<vec3>* verts, vector<vec2>* uvs, vector<vec3>* normals)
 		glBindBuffer(GL_ARRAY_BUFFER, vertexBufferID);
 		glBufferData(GL_ARRAY_BUFFER, verts->size() * sizeof(vec3), &verts->at(0), GL_STATIC_DRAW);
 	}
-
 	
 	if(uvs)
 	{

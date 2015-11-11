@@ -13,7 +13,7 @@ Camera::Camera(GLFWwindow* window, float aspectRatio, vec2 screenCenter)
 	mouseSens = 0.001;
 }
 
-void Camera::Update()
+void Camera::update()
 {
 
 	double curTime = glfwGetTime();
@@ -48,12 +48,17 @@ void Camera::Update()
 	viewMatrix = lookAt(position, position + forwardDirection, vec3(0,1,0));
 }
 
-mat4 Camera::GetViewMatrix()
+mat4 Camera::getViewMatrix()
 {
 	return viewMatrix;
 }
 
-mat4 Camera::GetProjMatrix()
+mat4 Camera::getProjMatrix()
 {
 	return projMatrix;
+}
+
+vec3 Camera::getPosition()
+{
+	return position;
 }
