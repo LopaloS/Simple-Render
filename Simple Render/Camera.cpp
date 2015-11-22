@@ -1,5 +1,4 @@
 #include "stdafx.h"
-#include "Camera.h"
 #include <gtx/transform.hpp>
 
 Camera::Camera(GLFWwindow* window, float aspectRatio, vec2 screenCenter)
@@ -35,13 +34,13 @@ void Camera::update()
 	vec3 rightDirection = cross(forwardDirection, vec3(0,1,0));
 	normalize(rightDirection);
 
-	if(glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS)
+	if(glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS || glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
 		position -= forwardDirection * speed * deltaTime;
-	if(glfwGetKey(window, GLFW_KEY_DOWN) == GLFW_PRESS)
+	if(glfwGetKey(window, GLFW_KEY_DOWN) == GLFW_PRESS || glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
 		position += forwardDirection * speed * deltaTime;
-	if(glfwGetKey(window, GLFW_KEY_LEFT) == GLFW_PRESS)
+	if(glfwGetKey(window, GLFW_KEY_LEFT) == GLFW_PRESS || glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
 		position += rightDirection * speed * deltaTime;
-	if(glfwGetKey(window, GLFW_KEY_RIGHT) == GLFW_PRESS)
+	if(glfwGetKey(window, GLFW_KEY_RIGHT) == GLFW_PRESS || glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
 		position -= rightDirection * speed * deltaTime;
 
 	projMatrix = perspective(fov, aspectRatio, 0.3f, 1000.0f);

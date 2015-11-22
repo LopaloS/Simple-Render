@@ -6,10 +6,12 @@ layout(location = 2) in vec3 normal;
 
 uniform mat4 viewProj;
 uniform mat4 model;
+uniform mat4 lightSpace;
 
 out vec2 uv;
 out vec3 oNormal;
-out vec3 vertWorldPos;
+out vec3 fragWorldPos;
+out vec3 fragLightSpace;
 
 void main()
 {
@@ -20,5 +22,6 @@ void main()
 	gl_Position = mvp * gl_Position;
 	uv = vertexUV;
 	oNormal = normal;
-	vertWorldPos = vec3(model * vec4(vertPos,1));
+	fragWorldPos = vec3(model * vec4(vertPos,1));
+	fragLightSpace = vec3(lightSpace * vec4(fragWorldPos, 1));
 }

@@ -119,14 +119,23 @@ void Scene::createCubeMapObj()
 	Material material("Skybox.glsl");
 	CubeMap cubemap;
 	cubeMapObject = new SkyboxObject(mesh, material.getID(), cubemap.getID());
+
+	depthShaderID = Material("Depth.glsl").getID();
 }
 
-void Scene::render(mat4 viewMat, mat4 projMat, vec3 viewPos)
+void Scene::render(Camera camera, DirectionLight light)
 {
-	cubeMapObject->render(projMat * mat4(mat3(viewMat)));
-	
+	cubeMapObject->render(camera);
 	for(vector<SceneObject>::iterator it = sceneObjects.begin(); it != sceneObjects.end(); it++)
 	{
-		it->render(projMat * viewMat, normalize(vec3(sin(glfwGetTime()),0,cos(glfwGetTime()))), viewPos);
+		it->render(camera, light);
+	}
+}
+
+void Scene::renderDepth(DirectionLight light)
+{
+	for(vector<SceneObject>::iterator it = sceneObjects.begin(); it != sceneObjects.end(); it++)
+	{
+		it->renderDepth(depthShaderID, light);
 	}
 }

@@ -1,8 +1,15 @@
 #include "SceneObject.h"
 
-class SkyboxObject : public SceneObject
+class SkyboxObject
 	{
 	public:
 		SkyboxObject(Mesh* mesh, GLuint shaderID, GLuint textureID);
-		void render(mat4 viewProj);		
+		void render(Camera camera);		
+	private:
+		Mesh* mesh;
+		GLuint shaderID;
+		GLuint textureID;
+
+		GLuint textureSamplerID;
+		GLuint viewProjMatrixID;
 	};

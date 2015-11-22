@@ -6,9 +6,10 @@ public:
 	SceneObject(Mesh* mesh, GLuint shaderID, GLuint TextureID, mat4 transMat);
 	void setNormalMap(GLuint normalMapID);
 	void setSpecularMap(GLuint specularMapID);
-	virtual void render(mat4 viewProj, vec3 lightDir, vec3 viewPos);
+	void render(Camera camera, DirectionLight light);
+	void renderDepth(GLuint depthShaderID, DirectionLight light);
 
-protected:
+private:
 	Mesh* mesh;
 	GLuint shaderID;
 	GLuint textureID;
@@ -16,6 +17,7 @@ protected:
 	GLuint specularMapID;
 
 	GLuint textureSamplerID;
+	GLuint shadowSamplerID;
 	GLuint normalSamplerID;
 	GLuint specularSamplerID;
 
@@ -23,7 +25,7 @@ protected:
 	GLuint transMatrixID;
 	GLuint lightDirID;
 	GLuint viewDirID;
+	GLuint lightSpaceID;
 
-private:
 	mat4 transMat;
 };

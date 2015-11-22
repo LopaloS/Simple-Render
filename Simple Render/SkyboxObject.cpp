@@ -1,11 +1,18 @@
 #include "SkyboxObject.h"
 
 SkyboxObject::SkyboxObject(Mesh* mesh, GLuint shaderID, GLuint textureID) 
-	: SceneObject(mesh, shaderID, textureID, mat4(1))
-{}
-
-void SkyboxObject::render(mat4 viewProj) 
 {
+	this->mesh = mesh;
+	this->shaderID = shaderID;
+	this->textureID = textureID;	
+
+	textureSamplerID = glGetUniformLocation(shaderID, "sampler");
+	viewProjMatrixID = glGetUniformLocation(shaderID, "viewProj");
+}
+
+void SkyboxObject::render(Camera camera) 
+{
+	mat4 viewProj = camera.getProjMatrix() * mat4(mat3(camera.getViewMatrix()));
 	glUseProgram(shaderID);
 	glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_CUBE_MAP, textureID);

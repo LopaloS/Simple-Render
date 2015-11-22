@@ -1,3 +1,4 @@
+#include "stdafx.h"
 #include "Libs\jsoncpp\json\json.h"
 #include "Material.h"
 #include "SkyboxObject.h"
@@ -9,8 +10,8 @@ class Scene
 {
 public:
 	Scene(char* pathToData);
-	void render(mat4 viewMat, mat4 projMat, vec3 viewPos);
-
+	void render(Camera camera, DirectionLight light);
+	void renderDepth(DirectionLight light);
 
 private:
 	vector<SceneObject> sceneObjects; 
@@ -18,9 +19,10 @@ private:
 	map<string, GLint> materialMap;
 	map<string, GLint> texturesMap;
 
+	GLuint depthShaderID;
 	SkyboxObject* cubeMapObject;
-
 	MeshLoader* meshLoader;
+	vec3 lightDir;
 
 	Mesh* getMesh(string);
 	GLuint getMaterialID(string);

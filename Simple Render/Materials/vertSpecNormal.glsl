@@ -7,10 +7,12 @@ layout(location = 3) in vec3 tangent;
 
 uniform mat4 viewProj;
 uniform mat4 model;
+uniform mat4 lightSpace;
 
 out vec2 uv;
 out mat3 TBN;
-out vec3 vertWorldPos;
+out vec3 fragWorldPos;
+out vec3 fragLightSpace;
 
 void main()
 {
@@ -27,5 +29,6 @@ void main()
 	vec3 B = cross(N,T);
 	
 	TBN = mat3(T,B,N);
-	vertWorldPos = vec3(model * vec4(vertPos, 1));
+	fragWorldPos = vec3(model * vec4(vertPos, 1));
+	fragLightSpace = vec3(lightSpace * vec4(fragWorldPos, 1));
 }
