@@ -16,11 +16,23 @@ uniform vec3 viewPos;
 float getShadow(vec3 normal)
 {
 	vec3 fragLightSpace = fragLightSpace / 2 + 0.5f; 
-	float depth = texture2D(shadowSampler, fragLightSpace.xy).r;
 	if(fragLightSpace.z > 1.0f)
 		return 1;
-	float bias = max(0.02f * (1.0f - dot(lightDir, normal)), 0.002f);
-	return depth > fragLightSpace.z - bias ? 1:0;
+		
+	float bias = max(0.05f * (1.0f - dot(lightDir, normal)), 0.005f);
+	vec2 texelSize = 1.0f / textureSize(shadowSampler, 0);
+	float shadowFactor = 0.0f;
+	
+	for(int i = -2; i <= 2; i++)
+	{
+		for(int j = -2; j <= 2; j++)
+		{
+			float depth = texture2D(shadowSampler, fragLightSpace.xy + texelSize * vec2(i,j)).r;
+			shadowFactor += depth > fragLightSpace.z - bias ? 1:0;
+		}
+	}
+	
+	return shadowFactor /= 25;
 }
 
 void main()
@@ -37,7 +49,7 @@ void main()
 	
 	vec3 viewDir = normalize(viewPos - vertWorldPos);
 	vec3 halfWayDir = normalize(viewDir + lightDir);
-	float spec = pow((max(0.0f, dot(normal, halfWayDir))), 32);
+	float spec = pow((max(0.0f, dot(normal, halfWayDir))), 16);
 	vec3 specular = color.rgb * spec;
 	
 	color.rgb = ambient + (diffuse + specular) * getShadow(normal);

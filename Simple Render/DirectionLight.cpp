@@ -10,6 +10,7 @@ void DirectionLight::updatePosition()
 {
 	float angularSpeed = 0.1f;
 	direction = normalize(vec3(sin(glfwGetTime() * angularSpeed),0.8f,cos(glfwGetTime() * angularSpeed)));
+	//direction = normalize(vec3(0.5f,0.8f,0.5f));
 }
 
 vec3 DirectionLight::getDirection()
