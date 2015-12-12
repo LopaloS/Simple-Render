@@ -74,9 +74,9 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>D:\Simple Render\Simple Render\Libs\glm-0.9.6.3\glm\glm;D:\Simple Render\Simple Render\Libs\glfw-3.1.1.bin.WIN32\include\GLFW;D:\Simple Render\Simple Render\Libs\glew-1.12.0\include;D:\Programs\FbxSDK2016\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Simple Render\Simple Render\Libs\FreeImage_x32;D:\Simple Render\Simple Render\Libs\glm-0.9.6.3\glm\glm;D:\Simple Render\Simple Render\Libs\glfw-3.1.1.bin.WIN32\include\GLFW;D:\Simple Render\Simple Render\Libs\glew-1.12.0\include</AdditionalIncludeDirectories>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
@@ -84,8 +84,10 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>D:\Simple Render\Simple Render\Libs\glfw-3.1.1.bin.WIN32\lib-vc2012;D:\Programs\FbxSDK2016\lib\vs2012\x86\release;D:\Simple Render\Simple Render\Libs\glew-1.12.0\lib\Release\Win32</AdditionalLibraryDirectories>
-      <AdditionalDependencies>opengl32.lib;glu32.lib;glew32.lib;glfw3.lib;libfbxsdk.lib;;%(AdditionalDependencies);%(AdditionalDependencies);%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>D:\Simple Render\Simple Render\Libs\glfw-3.1.1.bin.WIN32\lib-vc2012;D:\Simple Render\Simple Render\Libs\FreeImage_x32;D:\Simple Render\Simple Render\Libs\glew-1.12.0\lib\Release\Win32</AdditionalLibraryDirectories>
+      <AdditionalDependencies>opengl32.lib;glu32.lib;glew32.lib;glfw3.lib;FreeImage.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <IgnoreSpecificDefaultLibraries>LIBCMT.lib;%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <AddModuleNamesToAssembly>LIBCMT.lib;%(AddModuleNamesToAssembly)</AddModuleNamesToAssembly>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>

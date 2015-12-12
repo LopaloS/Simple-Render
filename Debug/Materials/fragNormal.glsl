@@ -19,7 +19,7 @@ float getShadow(vec3 normal)
 	if(fragLightSpace.z > 1.0f)
 		return 1;
 		
-	float bias = max(0.05f * (1.0f - dot(lightDir, normal)), 0.005f);
+	float bias = max(0.01f * (1.0f - dot(lightDir, normal)), 0.001f);
 	vec2 texelSize = 1.0f / textureSize(shadowSampler, 0);
 	float shadowFactor = 0.0f;
 	
@@ -44,7 +44,7 @@ void main()
 	vec3 normal = texture2D(normalSampler, uv).xyz * 2 - 1;
 	normal = TBN * normal;
 	
-	vec3 ambient = color.rgb * 0.2f;
+	vec3 ambient = color.rgb * 0.4f;
 	vec3 diffuse = color.rgb * (max(0.0, dot(lightDir, normal)));
 	
 	vec3 viewDir = normalize(viewPos - vertWorldPos);

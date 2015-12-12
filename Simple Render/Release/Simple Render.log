@@ -1,0 +1,57 @@
+﻿Построение начато 12.12.2015 18:24:34.
+     1>Проект "D:\Simple Render\Simple Render\Simple Render.vcxproj" в узле 2 (целевые объекты Rebuild).
+     1>ClCompile:
+         D:\Programs\Visual Studio 2012\VC\bin\CL.exe /c /I"D:\Simple Render\Simple Render\Libs\FreeImage_x32" /I"D:\Simple Render\Simple Render\Libs\glm-0.9.6.3\glm\glm" /I"D:\Simple Render\Simple Render\Libs\glfw-3.1.1.bin.WIN32\include\GLFW" /I"D:\Simple Render\Simple Render\Libs\glew-1.12.0\include" /Zi /nologo /W3 /WX- /sdl /O2 /Oi /Oy- /GL /D WIN32 /D NDEBUG /D _CONSOLE /D _CRT_SECURE_NO_WARNINGS /D _UNICODE /D UNICODE /Gm- /EHsc /MT /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt Camera.cpp DirectionLight.cpp CubeMap.cpp Libs\jsoncpp\jsoncpp.cpp Material.cpp Mesh.cpp MeshLoader.cpp Scene.cpp SceneObject.cpp "Simple Render.cpp" SkyboxObject.cpp stdafx.cpp Texture.cpp
+         Camera.cpp
+     1>d:\simple render\simple render\stdafx.h(14): warning C4067: непредвиденные лексемы за директивой препроцессора, требуется newline
+     1>Camera.cpp(12): warning C4305: =: усечение из "double" к "float"
+     1>Camera.cpp(19): warning C4244: инициализация: преобразование "double" в "float", возможна потеря данных
+     1>Camera.cpp(26): warning C4244: +=: преобразование "double" в "float", возможна потеря данных
+     1>Camera.cpp(27): warning C4244: -=: преобразование "double" в "float", возможна потеря данных
+         DirectionLight.cpp
+     1>d:\simple render\simple render\stdafx.h(14): warning C4067: непредвиденные лексемы за директивой препроцессора, требуется newline
+         CubeMap.cpp
+     1>d:\simple render\simple render\stdafx.h(14): warning C4067: непредвиденные лексемы за директивой препроцессора, требуется newline
+         jsoncpp.cpp
+         Material.cpp
+     1>d:\simple render\simple render\stdafx.h(14): warning C4067: непредвиденные лексемы за директивой препроцессора, требуется newline
+         Mesh.cpp
+     1>d:\simple render\simple render\stdafx.h(14): warning C4067: непредвиденные лексемы за директивой препроцессора, требуется newline
+     1>Mesh.cpp(46): warning C4018: <: несоответствие типов со знаком и без знака
+         MeshLoader.cpp
+     1>d:\simple render\simple render\stdafx.h(14): warning C4067: непредвиденные лексемы за директивой препроцессора, требуется newline
+     1>MeshLoader.cpp(87): warning C4018: <: несоответствие типов со знаком и без знака
+         Scene.cpp
+     1>d:\simple render\simple render\stdafx.h(14): warning C4067: непредвиденные лексемы за директивой препроцессора, требуется newline
+         SceneObject.cpp
+     1>d:\simple render\simple render\stdafx.h(14): warning C4067: непредвиденные лексемы за директивой препроцессора, требуется newline
+         Simple Render.cpp
+     1>d:\simple render\simple render\stdafx.h(14): warning C4067: непредвиденные лексемы за директивой препроцессора, требуется newline
+         SkyboxObject.cpp
+     1>d:\simple render\simple render\stdafx.h(14): warning C4067: непредвиденные лексемы за директивой препроцессора, требуется newline
+         stdafx.cpp
+     1>d:\simple render\simple render\stdafx.h(14): warning C4067: непредвиденные лексемы за директивой препроцессора, требуется newline
+         Texture.cpp
+     1>d:\simple render\simple render\stdafx.h(14): warning C4067: непредвиденные лексемы за директивой препроцессора, требуется newline
+       Link:
+         D:\Programs\Visual Studio 2012\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\Simple Render\Release\Simple Render.exe" /INCREMENTAL:NO /NOLOGO /LIBPATH:"D:\Simple Render\Simple Render\Libs\glfw-3.1.1.bin.WIN32\lib-vc2012" /LIBPATH:"D:\Simple Render\Simple Render\Libs\FreeImage_x32" /LIBPATH:"D:\Simple Render\Simple Render\Libs\glew-1.12.0\lib\Release\Win32" opengl32.lib glu32.lib glew32.lib glfw3.lib FreeImage.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /NODEFAULTLIB:LIBCMT.lib /ASSEMBLYMODULE:LIBCMT.lib /ASSEMBLYRESOURCE:LIBCMT.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:\Simple Render\Release\Simple Render.pdb" /SUBSYSTEM:CONSOLE /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\Simple Render\Release\Simple Render.lib" /MACHINE:X86 /SAFESEH Release\Camera.obj
+         Release\DirectionLight.obj
+         Release\CubeMap.obj
+         Release\jsoncpp.obj
+         Release\Material.obj
+         Release\Mesh.obj
+         Release\MeshLoader.obj
+         Release\Scene.obj
+         Release\SceneObject.obj
+         "Release\Simple Render.obj"
+         Release\SkyboxObject.obj
+         Release\stdafx.obj
+         Release\Texture.obj
+         Создание кода
+         Создание кода завершено
+         Simple Render.vcxproj -> D:\Simple Render\Release\Simple Render.exe
+     1>Построение проекта "D:\Simple Render\Simple Render\Simple Render.vcxproj" завершено (целевые объекты Rebuild).
+
+Построение успешно завершено.
+
+Затраченное время: 00:00:06.74

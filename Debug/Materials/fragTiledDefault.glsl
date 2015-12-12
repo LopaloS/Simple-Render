@@ -41,7 +41,7 @@ void main()
 	if(color.a < 0.5f)
 		discard;
 		
-	vec3 ambient = color.rgb * 0.2f;
+	vec3 ambient = color.rgb * 0.4f;
 	vec3 diffuse = color.rgb * (max(0.0, dot(lightDir, oNormal)));
 	
 	vec3 viewDir = normalize(viewPos - vertWorldPos);

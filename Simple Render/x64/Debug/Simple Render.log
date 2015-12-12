@@ -1,0 +1,108 @@
+﻿Построение начато 09.12.2015 23:41:12.
+     1>Проект "D:\Simple Render\Simple Render\Simple Render.vcxproj" в узле 2 (целевые объекты Rebuild).
+     1>ClCompile:
+         D:\Programs\Visual Studio 2012\VC\bin\x86_amd64\CL.exe /c /I"D:\Simple Render\Simple Render\Libs\glm-0.9.6.3\glm\glm" /I"D:\Simple Render\Simple Render\Libs\FreeImage_x32" /I"D:\Simple Render\Simple Render\Libs\glfw-3.1.1.bin.WIN32\include\GLFW" /I"D:\Simple Render\Simple Render\Libs\glew-1.12.0\include" /Zi /nologo /W3 /WX- /sdl /Od /D WIN32 /D _DEBUG /D _CONSOLE /D _CRT_SECURE_NO_WARNINGS /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"x64\Debug\\" /Fd"x64\Debug\vc110.pdb" /Gd /TP /errorReport:prompt Camera.cpp DirectionLight.cpp CubeMap.cpp Libs\jsoncpp\jsoncpp.cpp Material.cpp Mesh.cpp MeshLoader.cpp Scene.cpp SceneObject.cpp "Simple Render.cpp" SkyboxObject.cpp stdafx.cpp Texture.cpp
+         Texture.cpp
+     1>d:\simple render\simple render\stdafx.h(14): warning C4067: непредвиденные лексемы за директивой препроцессора, требуется newline
+         stdafx.cpp
+     1>d:\simple render\simple render\stdafx.h(14): warning C4067: непредвиденные лексемы за директивой препроцессора, требуется newline
+         SkyboxObject.cpp
+     1>d:\simple render\simple render\stdafx.h(14): warning C4067: непредвиденные лексемы за директивой препроцессора, требуется newline
+         Simple Render.cpp
+     1>d:\simple render\simple render\stdafx.h(14): warning C4067: непредвиденные лексемы за директивой препроцессора, требуется newline
+         SceneObject.cpp
+     1>d:\simple render\simple render\stdafx.h(14): warning C4067: непредвиденные лексемы за директивой препроцессора, требуется newline
+         Scene.cpp
+     1>d:\simple render\simple render\stdafx.h(14): warning C4067: непредвиденные лексемы за директивой препроцессора, требуется newline
+         MeshLoader.cpp
+     1>d:\simple render\simple render\stdafx.h(14): warning C4067: непредвиденные лексемы за директивой препроцессора, требуется newline
+         Mesh.cpp
+     1>d:\simple render\simple render\stdafx.h(14): warning C4067: непредвиденные лексемы за директивой препроцессора, требуется newline
+     1>Mesh.cpp(36): warning C4267: =: преобразование из "size_t" в "GLuint"; возможна потеря данных
+     1>Mesh.cpp(46): warning C4018: <: несоответствие типов со знаком и без знака
+         Material.cpp
+     1>d:\simple render\simple render\stdafx.h(14): warning C4067: непредвиденные лексемы за директивой препроцессора, требуется newline
+         jsoncpp.cpp
+         CubeMap.cpp
+     1>d:\simple render\simple render\stdafx.h(14): warning C4067: непредвиденные лексемы за директивой препроцессора, требуется newline
+         DirectionLight.cpp
+     1>d:\simple render\simple render\stdafx.h(14): warning C4067: непредвиденные лексемы за директивой препроцессора, требуется newline
+         Camera.cpp
+     1>d:\simple render\simple render\stdafx.h(14): warning C4067: непредвиденные лексемы за директивой препроцессора, требуется newline
+     1>Camera.cpp(12): warning C4305: =: усечение из "double" к "float"
+     1>Camera.cpp(19): warning C4244: инициализация: преобразование "double" в "float", возможна потеря данных
+     1>Camera.cpp(26): warning C4244: +=: преобразование "double" в "float", возможна потеря данных
+     1>Camera.cpp(27): warning C4244: -=: преобразование "double" в "float", возможна потеря данных
+         Создание кода...
+       Link:
+         D:\Programs\Visual Studio 2012\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"D:\Simple Render\x64\Debug\Simple Render.exe" /INCREMENTAL /NOLOGO /LIBPATH:"D:\Simple Render\Simple Render\Libs\FreeImage_x32" /LIBPATH:"D:\Simple Render\Simple Render\Libs\glfw-3.1.1.bin.WIN32\lib-vc2012" /LIBPATH:"D:\Simple Render\Simple Render\Libs\glew-1.12.0\lib\Release\Win32" opengl32.lib glu32.lib glew32.lib glfw3.lib FreeImage.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /NODEFAULTLIB:LIBCMTD.lib /ASSEMBLYMODULE:LIBCMTD.lib /ASSEMBLYRESOURCE:LIBCMTD.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:\Simple Render\x64\Debug\Simple Render.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\Simple Render\x64\Debug\Simple Render.lib" /MACHINE:X64 x64\Debug\Camera.obj
+         x64\Debug\DirectionLight.obj
+         x64\Debug\CubeMap.obj
+         x64\Debug\jsoncpp.obj
+         x64\Debug\Material.obj
+         x64\Debug\Mesh.obj
+         x64\Debug\MeshLoader.obj
+         x64\Debug\Scene.obj
+         x64\Debug\SceneObject.obj
+         "x64\Debug\Simple Render.obj"
+         x64\Debug\SkyboxObject.obj
+         x64\Debug\stdafx.obj
+         x64\Debug\Texture.obj
+     1>Camera.obj : error LNK2019: ссылка на неразрешенный внешний символ glfwGetKey в функции "public: void __cdecl Camera::update(void)" (?update@Camera@@QEAAXXZ)
+     1>Simple Render.obj : error LNK2001: неразрешенный внешний символ "glfwGetKey"
+     1>Camera.obj : error LNK2019: ссылка на неразрешенный внешний символ glfwGetCursorPos в функции "public: void __cdecl Camera::update(void)" (?update@Camera@@QEAAXXZ)
+     1>Camera.obj : error LNK2019: ссылка на неразрешенный внешний символ glfwSetCursorPos в функции "public: void __cdecl Camera::update(void)" (?update@Camera@@QEAAXXZ)
+     1>Camera.obj : error LNK2019: ссылка на неразрешенный внешний символ glfwGetTime в функции "public: void __cdecl Camera::update(void)" (?update@Camera@@QEAAXXZ)
+     1>DirectionLight.obj : error LNK2001: неразрешенный внешний символ "glfwGetTime"
+     1>Material.obj : error LNK2001: неразрешенный внешний символ "__imp___glewAttachShader"
+     1>Material.obj : error LNK2001: неразрешенный внешний символ "__imp___glewCompileShader"
+     1>Material.obj : error LNK2001: неразрешенный внешний символ "__imp___glewCreateProgram"
+     1>Material.obj : error LNK2001: неразрешенный внешний символ "__imp___glewCreateShader"
+     1>Material.obj : error LNK2001: неразрешенный внешний символ "__imp___glewDeleteShader"
+     1>Material.obj : error LNK2001: неразрешенный внешний символ "__imp___glewGetProgramInfoLog"
+     1>Material.obj : error LNK2001: неразрешенный внешний символ "__imp___glewGetProgramiv"
+     1>Material.obj : error LNK2001: неразрешенный внешний символ "__imp___glewGetShaderInfoLog"
+     1>Material.obj : error LNK2001: неразрешенный внешний символ "__imp___glewGetShaderiv"
+     1>Material.obj : error LNK2001: неразрешенный внешний символ "__imp___glewLinkProgram"
+     1>Material.obj : error LNK2001: неразрешенный внешний символ "__imp___glewShaderSource"
+     1>Mesh.obj : error LNK2001: неразрешенный внешний символ "__imp___glewBindBuffer"
+     1>Mesh.obj : error LNK2001: неразрешенный внешний символ "__imp___glewBufferData"
+     1>Mesh.obj : error LNK2001: неразрешенный внешний символ "__imp___glewGenBuffers"
+     1>Mesh.obj : error LNK2001: неразрешенный внешний символ "__imp___glewDisableVertexAttribArray"
+     1>Mesh.obj : error LNK2001: неразрешенный внешний символ "__imp___glewEnableVertexAttribArray"
+     1>Mesh.obj : error LNK2001: неразрешенный внешний символ "__imp___glewVertexAttribPointer"
+     1>SceneObject.obj : error LNK2001: неразрешенный внешний символ "__imp___glewActiveTexture"
+     1>SkyboxObject.obj : error LNK2001: неразрешенный внешний символ "__imp___glewActiveTexture"
+     1>SceneObject.obj : error LNK2001: неразрешенный внешний символ "__imp___glewGetUniformLocation"
+     1>SkyboxObject.obj : error LNK2001: неразрешенный внешний символ "__imp___glewGetUniformLocation"
+     1>SceneObject.obj : error LNK2001: неразрешенный внешний символ "__imp___glewUniform1i"
+     1>SkyboxObject.obj : error LNK2001: неразрешенный внешний символ "__imp___glewUniform1i"
+     1>SceneObject.obj : error LNK2001: неразрешенный внешний символ "__imp___glewUniform3fv"
+     1>SceneObject.obj : error LNK2001: неразрешенный внешний символ "__imp___glewUniformMatrix4fv"
+     1>SkyboxObject.obj : error LNK2001: неразрешенный внешний символ "__imp___glewUniformMatrix4fv"
+     1>SceneObject.obj : error LNK2001: неразрешенный внешний символ "__imp___glewUseProgram"
+     1>SkyboxObject.obj : error LNK2001: неразрешенный внешний символ "__imp___glewUseProgram"
+     1>Simple Render.obj : error LNK2019: ссылка на неразрешенный внешний символ __imp_glewInit в функции main
+     1>Simple Render.obj : error LNK2019: ссылка на неразрешенный внешний символ glfwInit в функции main
+     1>Simple Render.obj : error LNK2019: ссылка на неразрешенный внешний символ glfwTerminate в функции main
+     1>Simple Render.obj : error LNK2019: ссылка на неразрешенный внешний символ glfwCreateWindow в функции main
+     1>Simple Render.obj : error LNK2019: ссылка на неразрешенный внешний символ glfwWindowShouldClose в функции main
+     1>Simple Render.obj : error LNK2019: ссылка на неразрешенный внешний символ glfwPollEvents в функции main
+     1>Simple Render.obj : error LNK2019: ссылка на неразрешенный внешний символ glfwSetInputMode в функции main
+     1>Simple Render.obj : error LNK2019: ссылка на неразрешенный внешний символ glfwMakeContextCurrent в функции main
+     1>Simple Render.obj : error LNK2019: ссылка на неразрешенный внешний символ glfwSwapBuffers в функции main
+     1>Simple Render.obj : error LNK2001: неразрешенный внешний символ "__imp___glewBindFramebuffer"
+     1>Simple Render.obj : error LNK2001: неразрешенный внешний символ "__imp___glewFramebufferTexture2D"
+     1>Simple Render.obj : error LNK2001: неразрешенный внешний символ "__imp___glewGenFramebuffers"
+     1>Texture.obj : error LNK2019: ссылка на неразрешенный внешний символ __imp_FreeImage_Load в функции "protected: unsigned char * __cdecl Texture::load(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)" (?load@Texture@@IEAAPEAEV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z)
+     1>Texture.obj : error LNK2019: ссылка на неразрешенный внешний символ __imp_FreeImage_GetBits в функции "protected: unsigned char * __cdecl Texture::load(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)" (?load@Texture@@IEAAPEAEV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z)
+     1>Texture.obj : error LNK2019: ссылка на неразрешенный внешний символ __imp_FreeImage_GetWidth в функции "protected: unsigned char * __cdecl Texture::load(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)" (?load@Texture@@IEAAPEAEV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z)
+     1>Texture.obj : error LNK2019: ссылка на неразрешенный внешний символ __imp_FreeImage_GetHeight в функции "protected: unsigned char * __cdecl Texture::load(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)" (?load@Texture@@IEAAPEAEV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z)
+     1>Texture.obj : error LNK2019: ссылка на неразрешенный внешний символ __imp_FreeImage_ConvertTo32Bits в функции "protected: unsigned char * __cdecl Texture::load(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)" (?load@Texture@@IEAAPEAEV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z)
+     1>Texture.obj : error LNK2001: неразрешенный внешний символ "__imp___glewGenerateMipmap"
+     1>D:\Simple Render\x64\Debug\Simple Render.exe : fatal error LNK1120: неразрешенных внешних элементов: 45
+     1>Построение проекта "D:\Simple Render\Simple Render\Simple Render.vcxproj" завершено (целевые объекты Rebuild) с ошибкой.
+
+Сбой построения.
+
+Затраченное время: 00:00:07.19
