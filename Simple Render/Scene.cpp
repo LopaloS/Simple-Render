@@ -12,7 +12,6 @@ Scene::Scene(char* pathToData)
 	Value root;	
 	jsonReader.parse(stream, root, false);
 
-
 	for (Value::iterator iter = root.begin(); iter != root.end(); iter++)
 	{
 		Value rotValue = (*iter)["rotation"];
@@ -24,17 +23,23 @@ Scene::Scene(char* pathToData)
 		vec3 pos(posValue[0].asFloat(), posValue[1].asFloat(), posValue[2].asFloat());
 		transformMat = translate(transformMat, pos);
 	
-		Mesh* tempMesh = getMesh((*iter)["meshName"].asString());
-		GLuint tempMaterialID = getMaterialID((*iter)["materialName"].asCString());
-		GLuint tempTextureID = getTextureID ((*iter)["textureName"].asCString());
-		Value normalMapValue = (*iter)["normalMapName"];
-		Value specularMapValue = (*iter)["specularMapName"];
+		Mesh* tempMesh = getMesh((*iter)["mesh"].asString());
+		GLuint tempMaterialID = getMaterialID((*iter)["material"].asCString());
+		Value solidValue = (*iter)["solid"];
+
+		vector<string> names = (*iter).getMemberNames();
+		map<string, GLuint> texures;
+		for (int i = 0; i < names.size(); i++)
+		{
+			if(strstr(names[i].c_str(), "Tex"))
+			{
+				int texureID = getTextureID((*iter)[names[i].c_str()].asString());
+				texures.insert(pair<string, GLuint>(names[i], texureID));
+			}
+		}
 		
-		SceneObject sceneObject(tempMesh, tempMaterialID, tempTextureID, transformMat);
-		if(normalMapValue.type())
-			sceneObject.setNormalMap(getTextureID(normalMapValue.asCString()));
-		if(specularMapValue.type())
-			sceneObject.setSpecularMap(getTextureID(specularMapValue.asString()));
+		bool solid = solidValue.type() == NULL || solidValue.asBool();
+		SceneObject sceneObject(tempMesh, solid, tempMaterialID, texures, transformMat);
 
 		sceneObjects.push_back(sceneObject);
 	}

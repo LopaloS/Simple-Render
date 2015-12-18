@@ -52,7 +52,7 @@ int main(void)
 
 	glEnable(GL_DEPTH_TEST);
 	glDepthFunc(GL_LEQUAL); 
-	//glEnable(GL_CULL_FACE);
+	glEnable(GL_CULL_FACE);
 
 	glClearColor(0.4f,0.5f,1.0f,1.0f);	
 	
@@ -76,6 +76,7 @@ int main(void)
 		glBindFramebuffer(GL_FRAMEBUFFER, frameBufferID);
 		glClear(GL_DEPTH_BUFFER_BIT);
 
+		glEnable(GL_CULL_FACE);
 		scene->renderDepth(dirLight);
 		glBindFramebuffer(GL_FRAMEBUFFER, 0);
 

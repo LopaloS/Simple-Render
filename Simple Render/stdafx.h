@@ -13,4 +13,6 @@
 #include "CubeMap.h"
 #include "Camera.h";
 #include "DirectionLight.h"
+#include <vector>
+#include <map>
 

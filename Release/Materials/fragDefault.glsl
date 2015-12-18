@@ -7,8 +7,8 @@ in vec3 fragLightSpace;
 
 out vec4 color;
 
-uniform sampler2D sampler;
-uniform sampler2D shadowSampler;
+uniform sampler2D mainTex;
+uniform sampler2D shadowMap;
 
 uniform vec3 lightDir;
 uniform vec3 viewPos;
@@ -19,16 +19,15 @@ float getShadow()
 	if(fragLightSpace.z > 1.0f)
 		return 1;
 		
-	float bias = max(0.01f * (1.0f - dot(lightDir, oNormal)), 0.001f);
-	vec2 texelSize = 1.0f / textureSize(shadowSampler, 0);
+	vec2 texelSize = 1.0f / textureSize(shadowMap, 0);
 	float shadowFactor = 0.0f;
 	
 	for(int i = -2; i <= 2; i++)
 	{
 		for(int j = -2; j <= 2; j++)
 		{
-			float depth = texture2D(shadowSampler, fragLightSpace.xy + texelSize * vec2(i,j)).r;
-			shadowFactor += depth > fragLightSpace.z - bias ? 1:0;
+			float depth = texture2D(shadowMap, fragLightSpace.xy + texelSize * vec2(i,j)).r;
+			shadowFactor += depth > fragLightSpace.z ? 1:0;
 		}
 	}
 	
@@ -37,7 +36,7 @@ float getShadow()
 
 void main()
 {
-	color = texture2D(sampler, uv);
+	color = texture2D(mainTex, uv);
 	if(color.a < 0.5f)
 		discard;
 		

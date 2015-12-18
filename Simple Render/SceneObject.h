@@ -3,29 +3,14 @@
 class SceneObject
 {
 public:
-	SceneObject(Mesh* mesh, GLuint shaderID, GLuint TextureID, mat4 transMat);
-	void setNormalMap(GLuint normalMapID);
-	void setSpecularMap(GLuint specularMapID);
+	SceneObject(Mesh* mesh, bool solid,GLuint shaderID, map<string, GLuint> texures, mat4 transMat);
 	void render(Camera camera, DirectionLight light);
 	void renderDepth(GLuint depthShaderID, DirectionLight light);
 
 private:
 	Mesh* mesh;
+	bool solid;
 	GLuint shaderID;
-	GLuint textureID;
-	GLuint normalMapID;
-	GLuint specularMapID;
-
-	GLuint textureSamplerID;
-	GLuint shadowSamplerID;
-	GLuint normalSamplerID;
-	GLuint specularSamplerID;
-
-	GLuint viewProjMatrixID;
-	GLuint transMatrixID;
-	GLuint lightDirID;
-	GLuint viewDirID;
-	GLuint lightSpaceID;
-
+	map<string, GLuint> texures;
 	mat4 transMat;
 };

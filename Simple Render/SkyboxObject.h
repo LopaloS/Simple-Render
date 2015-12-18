@@ -1,7 +1,7 @@
 #include "SceneObject.h"
 
 class SkyboxObject
-	{
+{
 	public:
 		SkyboxObject(Mesh* mesh, GLuint shaderID, GLuint textureID);
 		void render(Camera camera);		
@@ -9,7 +9,4 @@ class SkyboxObject
 		Mesh* mesh;
 		GLuint shaderID;
 		GLuint textureID;
-
-		GLuint textureSamplerID;
-		GLuint viewProjMatrixID;
-	};
+};
