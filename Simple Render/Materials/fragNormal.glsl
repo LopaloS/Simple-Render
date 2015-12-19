@@ -48,7 +48,7 @@ void main()
 	
 	vec3 viewDir = normalize(viewPos - vertWorldPos);
 	vec3 halfWayDir = normalize(viewDir + lightDir);
-	float spec = pow((max(0.0f, dot(normal, halfWayDir))), 16);
+	float spec = pow((max(0.0f, dot(normal, halfWayDir))), 32);
 	vec3 specular = color.rgb * spec;
 	
 	color.rgb = ambient + (diffuse + specular) * getShadow();

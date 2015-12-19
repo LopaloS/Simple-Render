@@ -83,8 +83,13 @@
     },
 	{
 	"mesh": "landscape.obj",
-	"material":"TiledDefault.glsl",
-	"mainTex":"grass.png",
+	"material":"Terrain.glsl",
+	"grassTex":"grass.png",
+	"dirtTex":"dirt.png",
+	"brickTex": "brick_medieval.png",
+	"brickNormalTex": "brick_medieval_NRM.png",
+	"brickSpecularTex": "brick_medieval_spec.png",
+	"maskTex":"blendMask.png",
         "position": [0,-1.5,0],
         "rotation": [0,0,0]
     },
@@ -168,7 +173,7 @@
 	"mesh": "trunk.obj",
 	"material":"Default.glsl",
 	"mainTex":"trunk.png",
-        "position": [0,0,-12],
+        "position": [0,-0.1,-12],
         "rotation": [0,273,0]
     },
 	{

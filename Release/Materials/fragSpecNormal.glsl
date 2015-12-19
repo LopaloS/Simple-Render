@@ -50,7 +50,7 @@ void main()
 	
 	vec3 viewDir = normalize(viewPos - vertWorldPos);
 	vec3 halfWayDir = normalize(viewDir + lightDir);
-	float shine = texture2D(specularTex, uv).r;
+	float shine = texture2D(specularTex, uv).r * 32;
 	float spec = pow((max(0.0f, dot(normal, halfWayDir))), shine);
 	vec3 specular = color.rgb * spec;
 	

@@ -25,10 +25,9 @@ void main()
 	mat3 normModel = mat3(model);
 	vec3 N = normModel * normal;
 	vec3 T = normModel * tangent;
-	
 	vec3 B = cross(N,T);
-	
 	TBN = mat3(T,B,N);
+	
 	fragWorldPos = vec3(model * vec4(vertPos, 1));
 	fragLightSpace = vec3(lightSpace * vec4(fragWorldPos, 1));
 }
