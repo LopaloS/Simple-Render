@@ -28,5 +28,5 @@ private:
 	GLuint getMaterialID(string);
 	GLuint getTextureID(string);
 	
-	void createCubeMapObj();
+	GLuint createSkybox();
 };

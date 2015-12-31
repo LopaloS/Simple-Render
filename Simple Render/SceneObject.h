@@ -3,7 +3,7 @@
 class SceneObject
 {
 public:
-	SceneObject(Mesh* mesh, bool solid,GLuint shaderID, map<string, GLuint> texures, mat4 transMat);
+	SceneObject(Mesh* mesh, bool solid,GLuint shaderID, map<string, GLuint> texures, mat4 transMat, GLuint skyboxID);
 	void render(Camera camera, DirectionLight light);
 	void renderDepth(GLuint depthShaderID, DirectionLight light);
 
@@ -13,4 +13,5 @@ private:
 	GLuint shaderID;
 	map<string, GLuint> texures;
 	mat4 transMat;
+	GLuint skyboxID;
 };

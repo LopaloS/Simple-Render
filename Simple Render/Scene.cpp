@@ -6,6 +6,9 @@
 
 Scene::Scene(char* pathToData)
 {
+	GLuint skyboxID = createSkybox();
+	depthShaderID = Material("Depth.glsl").getID();
+
 	meshLoader = new MeshLoader();
     Reader jsonReader;
 	std::ifstream stream(pathToData);
@@ -39,12 +42,10 @@ Scene::Scene(char* pathToData)
 		}
 		
 		bool solid = solidValue.type() == NULL || solidValue.asBool();
-		SceneObject sceneObject(tempMesh, solid, tempMaterialID, texures, transformMat);
+		SceneObject sceneObject(tempMesh, solid, tempMaterialID, texures, transformMat, skyboxID);
 
 		sceneObjects.push_back(sceneObject);
 	}
-
-	createCubeMapObj();
 }
 
 Mesh* Scene::getMesh(string name)
@@ -74,7 +75,7 @@ GLuint Scene::getTextureID(string name)
 	return texturesMap[name];
 }
 
-void Scene::createCubeMapObj()
+GLuint Scene::createSkybox()
 {
 	vector<vec3>* vertices = new vector<vec3>();
 
@@ -124,8 +125,7 @@ void Scene::createCubeMapObj()
 	Material material("Skybox.glsl");
 	CubeMap cubemap;
 	cubeMapObject = new SkyboxObject(mesh, material.getID(), cubemap.getID());
-
-	depthShaderID = Material("Depth.glsl").getID();
+	return cubemap.getID();
 }
 
 void Scene::render(Camera camera, DirectionLight light)

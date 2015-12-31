@@ -1,12 +1,13 @@
 #include "SceneObject.h"
 
-SceneObject::SceneObject(Mesh* mesh, bool solid, GLuint shaderID, map<string, GLuint> texures, mat4 transMat)
+SceneObject::SceneObject(Mesh* mesh, bool solid, GLuint shaderID, map<string, GLuint> texures, mat4 transMat, GLuint skyboxID)
 {
 	this->mesh = mesh;
 	this->solid = solid;
 	this->shaderID = shaderID;
 	this->texures = texures;
 	this->transMat = transMat;
+	this->skyboxID = skyboxID;
 }
 
 void SceneObject::render(Camera camera, DirectionLight light)
@@ -37,12 +38,17 @@ void SceneObject::render(Camera camera, DirectionLight light)
 		uniformLocation++;
 	}
 
+	glActiveTexture(curTexture);
+	glBindTexture(GL_TEXTURE_CUBE_MAP, skyboxID);
+	glUniform1i(glGetUniformLocation(shaderID, "skybox"), uniformLocation);
+
 	mat4 viewProj = camera.getProjMatrix() * camera.getViewMatrix();
 	glUniform3fv(glGetUniformLocation(shaderID, "lightDir"),1, &light.getDirection()[0]);
 	glUniform3fv(glGetUniformLocation(shaderID, "viewPos"),1, &camera.getPosition()[0]);
 	glUniformMatrix4fv(glGetUniformLocation(shaderID, "viewProj"), 1,GL_FALSE, &viewProj[0][0]);
 	glUniformMatrix4fv(glGetUniformLocation(shaderID, "model"), 1,GL_FALSE, &transMat[0][0]);
 	glUniformMatrix4fv(glGetUniformLocation(shaderID, "lightSpace"), 1, GL_FALSE, &light.getLightSpace()[0][0]);
+	glUniform1f(glGetUniformLocation(shaderID, "time"), glfwGetTime());
 
 	mesh->draw();
 }
