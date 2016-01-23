@@ -9,6 +9,7 @@ SkyboxObject::SkyboxObject(Mesh* mesh, GLuint shaderID, GLuint textureID)
 
 void SkyboxObject::render(Camera camera) 
 {
+	glDisable(GL_CULL_FACE);
 	mat4 viewProj = camera.getProjMatrix() * mat4(mat3(camera.getViewMatrix()));
 	glUseProgram(shaderID);
 	glActiveTexture(GL_TEXTURE0);

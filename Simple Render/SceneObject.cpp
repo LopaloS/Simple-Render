@@ -48,15 +48,22 @@ void SceneObject::render(Camera camera, DirectionLight light, vec4 clipPlane)
 	mesh->draw();
 }
 
-void SceneObject::renderDepth(GLuint depthShaderID, DirectionLight light)
+
+void SceneObject::renderShadow(GLuint depthShaderID, DirectionLight light)
 {
 	if(solid)
 		glCullFace(GL_FRONT);
 	else
 		glCullFace(GL_BACK);
 
-	glUseProgram(depthShaderID);
-	mat4 mvpMat = light.getLightSpace() * transMat;
-	glUniformMatrix4fv(glGetUniformLocation(depthShaderID, "viewProjModel"), 1,GL_FALSE, &mvpMat[0][0]);
+
+	renderDepth(depthShaderID, light.getLightSpace(), vec4());
+}
+
+void SceneObject::renderDepth(GLuint depthShaderID, mat4 viewProj, vec4 clipPlane)
+{
+	glUniformMatrix4fv(glGetUniformLocation(depthShaderID, "viewProj"), 1,GL_FALSE, &viewProj[0][0]);
+	glUniformMatrix4fv(glGetUniformLocation(depthShaderID, "model"), 1,GL_FALSE, &transMat[0][0]);
+	glUniform4f(glGetUniformLocation(depthShaderID, "clipPlane"), clipPlane.x, clipPlane.y, clipPlane.z, clipPlane.w);
 	mesh->draw();
 }

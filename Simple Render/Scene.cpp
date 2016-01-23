@@ -9,13 +9,15 @@ Scene::Scene(int windowWidth, int windowHeight, char* pathToData)
 	this->windowWidth = windowWidth;
 	this->windowHeight = windowHeight;
 
-	GLuint skyboxID = createSkybox();
 	depthShaderID = Material("Depth.glsl").getID();
 	shadowFBO = new FrameBufferObject(depthMapResolution, depthMapResolution, false);
-	waterReflectFBO = new FrameBufferObject(windowWidth, windowHeight, true);
+	
 	waterRefractFBO = new FrameBufferObject(windowWidth, windowHeight, true);
+	waterRefractDepthFBO = new FrameBufferObject(windowWidth, windowHeight, false);
+	waterReflectFBO = new FrameBufferObject(windowWidth, windowHeight, true);
 
 	meshLoader = new MeshLoader();
+	GLuint skyboxID = createSkybox();
     Reader jsonReader;
 	std::ifstream stream(pathToData);
 	Value root;	
@@ -36,8 +38,7 @@ Scene::Scene(int windowWidth, int windowHeight, char* pathToData)
 		Mesh* tempMesh = getMesh((*iter)["mesh"].asString());
 
 		string materialName = (*iter)["material"].asCString();
-		if(strstr(materialName.c_str(), "Water"))
-			waterHeight = pos.y;
+		bool isWater = strstr(materialName.c_str(), "Water");
 
 		GLuint tempMaterialID = getMaterialID(materialName);
 		Value solidValue = (*iter)["solid"];
@@ -54,13 +55,24 @@ Scene::Scene(int windowWidth, int windowHeight, char* pathToData)
 				texures.insert(pair<string, GLuint>(names[i], texureID));
 			}
 		}
-		texures.insert(pair<string, GLuint>("refractionMap", waterRefractFBO->getTextureID()));
-		texures.insert(pair<string, GLuint>("reflectionMap", waterReflectFBO->getTextureID()));
 		
 		bool solid = solidValue.type() == NULL || solidValue.asBool();
-		SceneObject sceneObject(tempMesh, solid, tempMaterialID, texures, transformMat);
+		
 
-		sceneObjects.push_back(sceneObject);
+		if(isWater)
+		{
+			texures.insert(pair<string, GLuint>("refractionMap", waterRefractFBO->getTextureID()));
+			texures.insert(pair<string, GLuint>("reflectionMap", waterReflectFBO->getTextureID()));
+			texures.insert(pair<string, GLuint>("depthMap", waterRefractDepthFBO->getTextureID()));
+			SceneObject sceneObject(tempMesh, solid, tempMaterialID, texures, transformMat);
+			waterObjects.push_back(sceneObject);
+			waterHeight = pos.y;
+		}
+		else
+		{
+			SceneObject sceneObject(tempMesh, solid, tempMaterialID, texures, transformMat);
+			sceneObjects.push_back(sceneObject);
+		}
 	}
 }
 
@@ -94,51 +106,7 @@ GLuint Scene::getTextureID(string name)
 
 GLuint Scene::createSkybox()
 {
-	vector<vec3>* vertices = new vector<vec3>();
-
-	vertices->push_back(vec3(-1.0f,  1.0f, -1.0f));
-	vertices->push_back(vec3(-1.0f, -1.0f, -1.0f));
-	vertices->push_back(vec3( 1.0f, -1.0f, -1.0f));
-	vertices->push_back(vec3( 1.0f, -1.0f, -1.0f));
-	vertices->push_back(vec3( 1.0f,  1.0f, -1.0f));
-	vertices->push_back(vec3(-1.0f,  1.0f, -1.0f));
-
-	vertices->push_back(vec3(-1.0f, -1.0f,  1.0f));
-	vertices->push_back(vec3(-1.0f, -1.0f, -1.0f));
-	vertices->push_back(vec3(-1.0f,  1.0f, -1.0f));
-	vertices->push_back(vec3(-1.0f,  1.0f, -1.0f));
-	vertices->push_back(vec3(-1.0f,  1.0f,  1.0f));
-	vertices->push_back(vec3(-1.0f, -1.0f,  1.0f));
-
-	vertices->push_back(vec3( 1.0f, -1.0f, -1.0f));
-	vertices->push_back(vec3( 1.0f, -1.0f,  1.0f));
-	vertices->push_back(vec3( 1.0f,  1.0f,  1.0f));
-	vertices->push_back(vec3( 1.0f,  1.0f,  1.0f));
-	vertices->push_back(vec3( 1.0f,  1.0f, -1.0f));
-	vertices->push_back(vec3( 1.0f, -1.0f, -1.0f));
-
-	vertices->push_back(vec3(-1.0f, -1.0f,  1.0f));
-	vertices->push_back(vec3(-1.0f,  1.0f,  1.0f));
-	vertices->push_back(vec3( 1.0f,  1.0f,  1.0f));
-	vertices->push_back(vec3( 1.0f,  1.0f,  1.0f));
-	vertices->push_back(vec3( 1.0f, -1.0f,  1.0f));
-	vertices->push_back(vec3(-1.0f, -1.0f,  1.0f));
-
-	vertices->push_back(vec3(-1.0f,  1.0f, -1.0f));
-	vertices->push_back(vec3( 1.0f,  1.0f, -1.0f));
-	vertices->push_back(vec3( 1.0f,  1.0f,  1.0f));
-	vertices->push_back(vec3( 1.0f,  1.0f,  1.0f));
-	vertices->push_back(vec3(-1.0f,  1.0f,  1.0f));
-	vertices->push_back(vec3(-1.0f,  1.0f, -1.0f));
-
-	vertices->push_back(vec3(-1.0f, -1.0f, -1.0f));
-	vertices->push_back(vec3(-1.0f, -1.0f,  1.0f));
-	vertices->push_back(vec3( 1.0f, -1.0f, -1.0f));
-	vertices->push_back(vec3( 1.0f, -1.0f, -1.0f));
-	vertices->push_back(vec3(-1.0f, -1.0f,  1.0f));
-	vertices->push_back(vec3( 1.0f, -1.0f,  1.0f));
-
-	Mesh* mesh = new Mesh(vertices, NULL, NULL);
+	Mesh* mesh = getMesh("cube.obj");
 	Material material("Skybox.glsl");
 	CubeMap cubemap;
 	cubeMapObject = new SkyboxObject(mesh, material.getID(), cubemap.getID());
@@ -157,14 +125,13 @@ void Scene::render(Camera camera, DirectionLight light)
 	
 	vec4 clipPlane(0, -1, 0, waterHeight + 1);
 	waterRefractFBO->activate();
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	mainPass(camera, light, clipPlane);
-	
+	waterRefractDepthFBO->activate();
+	depthPass(camera, clipPlane);
 
 	clipPlane.y = 1;
 	clipPlane.w = -waterHeight;
 	waterReflectFBO->activate();
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	camera.setReflectedViewMatrix(waterHeight);
 	mainPass(camera, light, clipPlane);
 
@@ -173,6 +140,7 @@ void Scene::render(Camera camera, DirectionLight light)
 
 	camera.setNormalViewMatrix();
 	mainPass(camera, light, clipPlane);
+	waterPass(camera, light);
 }
 
 
@@ -182,10 +150,10 @@ void Scene::shadowPass(DirectionLight light)
 	shadowFBO->activate();
 	glClear(GL_DEPTH_BUFFER_BIT);
 	glEnable(GL_CULL_FACE);
-
+	glUseProgram(depthShaderID);
 	for(vector<SceneObject>::iterator it = sceneObjects.begin(); it != sceneObjects.end(); it++)
 	{
-		it->renderDepth(depthShaderID, light);
+		it->renderShadow(depthShaderID, light);
 	}
 }
 
@@ -195,5 +163,22 @@ void Scene::mainPass(Camera camera, DirectionLight light, vec4 clipPlane)
 	for(vector<SceneObject>::iterator it = sceneObjects.begin(); it != sceneObjects.end(); it++)
 	{
 		it->render(camera, light, clipPlane);
+	}
+}
+
+void Scene::depthPass(Camera camera, vec4 clipPlane)
+{
+	glUseProgram(depthShaderID);
+	for(vector<SceneObject>::iterator it = sceneObjects.begin(); it != sceneObjects.end(); it++)
+	{
+		it->renderDepth(depthShaderID, camera.getProjMatrix() * camera.getViewMatrix(), clipPlane);
+	}
+}
+
+void Scene::waterPass(Camera camera, DirectionLight light)
+{
+	for(vector<SceneObject>::iterator it = waterObjects.begin(); it != waterObjects.end(); it++)
+	{
+		it->render(camera, light, vec4());
 	}
 }

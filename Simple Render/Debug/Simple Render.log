@@ -1,17 +1,9 @@
-﻿Построение начато 23.01.2016 12:24:05.
+﻿Построение начато 23.01.2016 14:23:17.
      1>Проект "D:\Simple Render\Simple Render\Simple Render.vcxproj" в узле 2 (целевые объекты Build).
      1>ClCompile:
-         D:\Programs\Visual Studio 2012\VC\bin\CL.exe /c /I"D:\Simple Render\Simple Render\Libs\glm-0.9.6.3\glm\glm" /I"D:\Simple Render\Simple Render\Libs\FreeImage_x32" /I"D:\Simple Render\Simple Render\Libs\glfw-3.1.1.bin.WIN32\include\GLFW" /I"D:\Simple Render\Simple Render\Libs\glew-1.12.0\include" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _CRT_SECURE_NO_WARNINGS /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt FrameBufferObject.cpp Scene.cpp "Simple Render.cpp"
-         FrameBufferObject.cpp
+         D:\Programs\Visual Studio 2012\VC\bin\CL.exe /c /I"D:\Simple Render\Simple Render\Libs\glm-0.9.6.3\glm\glm" /I"D:\Simple Render\Simple Render\Libs\FreeImage_x32" /I"D:\Simple Render\Simple Render\Libs\glfw-3.1.1.bin.WIN32\include\GLFW" /I"D:\Simple Render\Simple Render\Libs\glew-1.12.0\include" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _CRT_SECURE_NO_WARNINGS /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt SkyboxObject.cpp
+         SkyboxObject.cpp
      1>d:\simple render\simple render\stdafx.h(14): warning C4067: непредвиденные лексемы за директивой препроцессора, требуется newline
-         Создание кода...
-         Компиляция...
-         Scene.cpp
-     1>d:\simple render\simple render\stdafx.h(14): warning C4067: непредвиденные лексемы за директивой препроцессора, требуется newline
-     1>d:\simple render\simple render\scene.cpp(49): warning C4018: <: несоответствие типов со знаком и без знака
-         Создание кода...
-         Пропуск... (изменения не обнаружены)
-         Simple Render.cpp
        Link:
          D:\Programs\Visual Studio 2012\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\Simple Render\Debug\Simple Render.exe" /INCREMENTAL /NOLOGO /LIBPATH:"D:\Simple Render\Simple Render\Libs\FreeImage_x32" /LIBPATH:"D:\Simple Render\Simple Render\Libs\glfw-3.1.1.bin.WIN32\lib-vc2012" /LIBPATH:"D:\Simple Render\Simple Render\Libs\glew-1.12.0\lib\Release\Win32" opengl32.lib glu32.lib glew32.lib glfw3.lib FreeImage.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /NODEFAULTLIB:LIBCMTD.lib /ASSEMBLYMODULE:LIBCMTD.lib /ASSEMBLYRESOURCE:LIBCMTD.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:\Simple Render\Debug\Simple Render.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\Simple Render\Debug\Simple Render.lib" /MACHINE:X86 Debug\Camera.obj
          Debug\DirectionLight.obj
@@ -32,4 +24,4 @@
 
 Построение успешно завершено.
 
-Затраченное время: 00:00:01.79
+Затраченное время: 00:00:00.88

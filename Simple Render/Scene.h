@@ -21,6 +21,7 @@ private:
 	int windowHeight;
 
 	vector<SceneObject> sceneObjects; 
+	vector<SceneObject> waterObjects; 
 	map<string, Mesh*> meshMap;
 	map<string, GLint> materialMap;
 	map<string, GLint> texturesMap;
@@ -30,8 +31,9 @@ private:
 	MeshLoader* meshLoader;
 
 	FrameBufferObject* shadowFBO;
-	FrameBufferObject* waterReflectFBO;
 	FrameBufferObject* waterRefractFBO;
+	FrameBufferObject* waterRefractDepthFBO;
+	FrameBufferObject* waterReflectFBO;
 
 	Mesh* getMesh(string);
 	GLuint getMaterialID(string);
@@ -42,4 +44,6 @@ private:
 	GLuint createSkybox();
 	void mainPass(Camera camera, DirectionLight light, vec4 clipPlane);
 	void shadowPass(DirectionLight light);
+	void depthPass(Camera camera, vec4 clipPlane);
+	void waterPass(Camera camera, DirectionLight light);
 };

@@ -34,6 +34,7 @@ GLuint FrameBufferObject::getTextureID()
 void FrameBufferObject::activate()
 {
 	glBindFramebuffer(GL_FRAMEBUFFER, frameBufferID);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
 
 void FrameBufferObject::genTexture(GLsizei width, GLsizei height, bool color)

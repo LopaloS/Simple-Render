@@ -97,7 +97,6 @@
 	"mesh": "river.obj",
 	"material":"Water.glsl",
 	"normalTex":"waterNormalMap.png",
-	"dudvTex":"dudvmap.png",
         "position": [0,-1.2,3],
         "rotation": [0,0,0]
     },
