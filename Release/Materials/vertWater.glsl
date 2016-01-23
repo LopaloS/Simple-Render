@@ -7,24 +7,25 @@ layout(location = 3) in vec3 tangent;
 
 uniform mat4 viewProj;
 uniform mat4 model;
-uniform mat4 lightSpace;
 uniform float time;
 
 out vec2 uv1;
 out vec2 uv2;
 out mat3 TBN;
 out vec3 fragWorldPos;
-out vec3 fragLightSpace;
+out vec4 fragDevicePos;
 
-vec2 tileSpeed = vec2(0.01f, 0.01f);
+vec2 tileSpeed = vec2(0.003f, 0.003f);
 vec2 tileScale = vec2(15f,15f);
 
 void main()
 {
 	mat4 mvp = viewProj * model;
 	gl_Position.xyz = vertPos;
+	gl_Position.y = 0;
 	gl_Position.w = 1;
 	gl_Position = mvp * gl_Position;
+	fragDevicePos = gl_Position;
 	uv1 = vec2(vertexUV.x, vertexUV.y + time * tileSpeed.y + 0.43f) * tileScale.x;
 	uv2 = vec2(vertexUV.x + time * tileSpeed.x, vertexUV.y) * tileScale.y;
 	
@@ -36,5 +37,4 @@ void main()
 	
 	TBN = mat3(T,B,N);
 	fragWorldPos = vec3(model * vec4(vertPos, 1));
-	fragLightSpace = vec3(lightSpace * vec4(fragWorldPos, 1));
 }

@@ -29,22 +29,36 @@ void Camera::update()
 	rotation.x = clamp(rotation.x, -1.57f, 1.57f); // radians
 
 	mat4 rotMat =  rotate(rotation.y, vec3(0,1,0)) * rotate(rotation.x, vec3(1,0,0));
-	vec3 forwardDirection = (vec3)(rotMat * vec4(0,0,1,0));
+	viewDirection = (vec3)(rotMat * vec4(0,0,1,0));
 
-	vec3 rightDirection = cross(forwardDirection, vec3(0,1,0));
+	vec3 rightDirection = cross(viewDirection, vec3(0,1,0));
 	normalize(rightDirection);
 
 	if(glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS || glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
-		position -= forwardDirection * speed * deltaTime;
+		position -= viewDirection * speed * deltaTime;
 	if(glfwGetKey(window, GLFW_KEY_DOWN) == GLFW_PRESS || glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
-		position += forwardDirection * speed * deltaTime;
+		position += viewDirection * speed * deltaTime;
 	if(glfwGetKey(window, GLFW_KEY_LEFT) == GLFW_PRESS || glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
 		position += rightDirection * speed * deltaTime;
 	if(glfwGetKey(window, GLFW_KEY_RIGHT) == GLFW_PRESS || glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
 		position -= rightDirection * speed * deltaTime;
 
-	projMatrix = perspective(fov, aspectRatio, 0.3f, 1000.0f);
-	viewMatrix = lookAt(position, position + forwardDirection, vec3(0,1,0));
+	setNormalViewMatrix();
+}
+
+void Camera::setReflectedViewMatrix(float height)
+{
+	float offset = 2 * (height - position.y);
+	vec3 reflectedPos = position;
+	reflectedPos.y += offset;
+	vec3 reflectedViewDirection = reflect( viewDirection, vec3(0,1,0));
+	
+	viewMatrix =  lookAt(reflectedPos, reflectedPos + reflectedViewDirection, vec3(0,1,0));
+}
+
+void Camera::setNormalViewMatrix()
+{
+	viewMatrix = lookAt(position, position + viewDirection, vec3(0,1,0));
 }
 
 mat4 Camera::getViewMatrix()
@@ -54,7 +68,7 @@ mat4 Camera::getViewMatrix()
 
 mat4 Camera::getProjMatrix()
 {
-	return projMatrix;
+	return perspective(fov, aspectRatio, 0.3f, 1000.0f);
 }
 
 vec3 Camera::getPosition()

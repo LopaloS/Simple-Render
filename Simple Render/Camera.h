@@ -11,12 +11,15 @@ class Camera
 		mat4 getViewMatrix();
 		mat4 getProjMatrix();
 		vec3 getPosition();
+
+		void setReflectedViewMatrix(float height);
+		void setNormalViewMatrix();
 	private:
 		GLFWwindow* window;
 		mat4 viewMatrix;
-		mat4 projMatrix;
 
 		vec3 position;
+		vec3 viewDirection;
 		vec2 rotation;
 		double lastTime;
 		float speed;

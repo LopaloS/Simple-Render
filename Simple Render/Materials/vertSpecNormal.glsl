@@ -8,6 +8,7 @@ layout(location = 3) in vec3 tangent;
 uniform mat4 viewProj;
 uniform mat4 model;
 uniform mat4 lightSpace;
+uniform vec4 clipPlane;
 
 out vec2 uv;
 out mat3 TBN;
@@ -30,4 +31,5 @@ void main()
 	
 	fragWorldPos = vec3(model * vec4(vertPos, 1));
 	fragLightSpace = vec3(lightSpace * vec4(fragWorldPos, 1));
+	gl_ClipDistance[0] = dot(vec4(fragWorldPos,1), clipPlane);
 }

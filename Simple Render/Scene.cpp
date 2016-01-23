@@ -4,16 +4,23 @@
 #include <gtx/euler_angles.hpp>
 #include <glfw3.h>
 
-Scene::Scene(char* pathToData)
+Scene::Scene(int windowWidth, int windowHeight, char* pathToData)
 {
+	this->windowWidth = windowWidth;
+	this->windowHeight = windowHeight;
+
 	GLuint skyboxID = createSkybox();
 	depthShaderID = Material("Depth.glsl").getID();
+	shadowFBO = new FrameBufferObject(depthMapResolution, depthMapResolution, false);
+	waterReflectFBO = new FrameBufferObject(windowWidth, windowHeight, true);
+	waterRefractFBO = new FrameBufferObject(windowWidth, windowHeight, true);
 
 	meshLoader = new MeshLoader();
     Reader jsonReader;
 	std::ifstream stream(pathToData);
 	Value root;	
 	jsonReader.parse(stream, root, false);
+	waterHeight = FLT_MAX;
 
 	for (Value::iterator iter = root.begin(); iter != root.end(); iter++)
 	{
@@ -27,11 +34,18 @@ Scene::Scene(char* pathToData)
 		transformMat = translate(transformMat, pos);
 	
 		Mesh* tempMesh = getMesh((*iter)["mesh"].asString());
-		GLuint tempMaterialID = getMaterialID((*iter)["material"].asCString());
+
+		string materialName = (*iter)["material"].asCString();
+		if(strstr(materialName.c_str(), "Water"))
+			waterHeight = pos.y;
+
+		GLuint tempMaterialID = getMaterialID(materialName);
 		Value solidValue = (*iter)["solid"];
 
 		vector<string> names = (*iter).getMemberNames();
 		map<string, GLuint> texures;
+
+		texures.insert(pair<string, GLuint>("shadowMap", shadowFBO->getTextureID()));
 		for (int i = 0; i < names.size(); i++)
 		{
 			if(strstr(names[i].c_str(), "Tex"))
@@ -40,9 +54,11 @@ Scene::Scene(char* pathToData)
 				texures.insert(pair<string, GLuint>(names[i], texureID));
 			}
 		}
+		texures.insert(pair<string, GLuint>("refractionMap", waterRefractFBO->getTextureID()));
+		texures.insert(pair<string, GLuint>("reflectionMap", waterReflectFBO->getTextureID()));
 		
 		bool solid = solidValue.type() == NULL || solidValue.asBool();
-		SceneObject sceneObject(tempMesh, solid, tempMaterialID, texures, transformMat, skyboxID);
+		SceneObject sceneObject(tempMesh, solid, tempMaterialID, texures, transformMat);
 
 		sceneObjects.push_back(sceneObject);
 	}
@@ -74,6 +90,7 @@ GLuint Scene::getTextureID(string name)
 	}
 	return texturesMap[name];
 }
+
 
 GLuint Scene::createSkybox()
 {
@@ -130,17 +147,53 @@ GLuint Scene::createSkybox()
 
 void Scene::render(Camera camera, DirectionLight light)
 {
-	cubeMapObject->render(camera);
-	for(vector<SceneObject>::iterator it = sceneObjects.begin(); it != sceneObjects.end(); it++)
-	{
-		it->render(camera, light);
-	}
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	shadowPass(light);
+	
+	glViewport(0,0, windowWidth, windowHeight);
+	
+	glEnable(GL_CLIP_DISTANCE0);
+
+	
+	vec4 clipPlane(0, -1, 0, waterHeight + 1);
+	waterRefractFBO->activate();
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	mainPass(camera, light, clipPlane);
+	
+
+	clipPlane.y = 1;
+	clipPlane.w = -waterHeight;
+	waterReflectFBO->activate();
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	camera.setReflectedViewMatrix(waterHeight);
+	mainPass(camera, light, clipPlane);
+
+	glBindFramebuffer(GL_FRAMEBUFFER, 0);
+	glDisable(GL_CLIP_DISTANCE0);
+
+	camera.setNormalViewMatrix();
+	mainPass(camera, light, clipPlane);
 }
 
-void Scene::renderDepth(DirectionLight light)
+
+void Scene::shadowPass(DirectionLight light)
 {
+	glViewport(0,0, depthMapResolution, depthMapResolution);
+	shadowFBO->activate();
+	glClear(GL_DEPTH_BUFFER_BIT);
+	glEnable(GL_CULL_FACE);
+
 	for(vector<SceneObject>::iterator it = sceneObjects.begin(); it != sceneObjects.end(); it++)
 	{
 		it->renderDepth(depthShaderID, light);
+	}
+}
+
+void Scene::mainPass(Camera camera, DirectionLight light, vec4 clipPlane)
+{
+	cubeMapObject->render(camera);
+	for(vector<SceneObject>::iterator it = sceneObjects.begin(); it != sceneObjects.end(); it++)
+	{
+		it->render(camera, light, clipPlane);
 	}
 }

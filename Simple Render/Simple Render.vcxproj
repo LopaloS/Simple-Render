@@ -97,6 +97,7 @@
     <ClInclude Include="Camera.h" />
     <ClInclude Include="CubeMap.h" />
     <ClInclude Include="DirectionLight.h" />
+    <ClInclude Include="FrameBufferObject.h" />
     <ClInclude Include="Libs\jsoncpp\json\json.h" />
     <ClInclude Include="Material.h" />
     <ClInclude Include="Mesh.h" />
@@ -112,6 +113,7 @@
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="DirectionLight.cpp" />
     <ClCompile Include="CubeMap.cpp" />
+    <ClCompile Include="FrameBufferObject.cpp" />
     <ClCompile Include="Libs\jsoncpp\jsoncpp.cpp" />
     <ClCompile Include="Material.cpp" />
     <ClCompile Include="Mesh.cpp" />

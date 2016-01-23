@@ -1,6 +1,6 @@
 #include "SceneObject.h"
 
-SceneObject::SceneObject(Mesh* mesh, bool solid, GLuint shaderID, map<string, GLuint> texures, mat4 transMat, GLuint skyboxID)
+SceneObject::SceneObject(Mesh* mesh, bool solid, GLuint shaderID, map<string, GLuint> texures, mat4 transMat)
 {
 	this->mesh = mesh;
 	this->solid = solid;
@@ -10,7 +10,7 @@ SceneObject::SceneObject(Mesh* mesh, bool solid, GLuint shaderID, map<string, GL
 	this->skyboxID = skyboxID;
 }
 
-void SceneObject::render(Camera camera, DirectionLight light)
+void SceneObject::render(Camera camera, DirectionLight light, vec4 clipPlane)
 {
 	if(solid)
 	{
@@ -22,12 +22,9 @@ void SceneObject::render(Camera camera, DirectionLight light)
 
 	glUseProgram(shaderID);
 
-	glActiveTexture(GL_TEXTURE0);
-	glBindTexture(GL_TEXTURE_2D, light.getShadowMapID());
-	glUniform1i(glGetUniformLocation(shaderID, "shadowMap"), 0);
 
-	GLuint curTexture = GL_TEXTURE1;
-	GLuint uniformLocation = 1;
+	GLuint curTexture = GL_TEXTURE0;
+	GLuint uniformLocation = 0;
 
 	for (auto iter = texures.begin(); iter != texures.end(); iter++)
 	{
@@ -38,9 +35,7 @@ void SceneObject::render(Camera camera, DirectionLight light)
 		uniformLocation++;
 	}
 
-	glActiveTexture(curTexture);
-	glBindTexture(GL_TEXTURE_CUBE_MAP, skyboxID);
-	glUniform1i(glGetUniformLocation(shaderID, "skybox"), uniformLocation);
+	glUniform4f(glGetUniformLocation(shaderID, "clipPlane"), clipPlane.x, clipPlane.y, clipPlane.z, clipPlane.w);
 
 	mat4 viewProj = camera.getProjMatrix() * camera.getViewMatrix();
 	glUniform3fv(glGetUniformLocation(shaderID, "lightDir"),1, &light.getDirection()[0]);
