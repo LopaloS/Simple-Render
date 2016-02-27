@@ -1,6 +1,4 @@
 #include "stdafx.h"
-//#include <GL/glew.h>
-
 #include "common.hpp"
 #include "Scene.h"
 
@@ -39,14 +37,21 @@ int main(void)
 
 	glClearColor(0.4f,0.5f,1.0f,1.0f);	
 	
+	MeshLoader* meshLoader = new MeshLoader();
 	Camera camera(window, (float)windowWidth/windowHeight, vec2(windowWidth/2, windowHeight/2));
 	DirectionLight dirLight;
-	Scene* scene = new Scene(windowWidth, windowHeight, "Scene.json"); 	
+	Scene* scene = new Scene(windowWidth, windowHeight, "Scene.json", meshLoader);
+
+	ColorFrameBufferObj defaultFBO(windowWidth, windowHeight);
+	map<string, GLuint> textures;
+	textures.insert(pair<string, GLuint>("colorTex", defaultFBO.getTextureID()));
+	Mesh* quad = meshLoader->loadMesh("Quad.obj");
+	Bloom bloom(windowWidth, windowHeight, quad);
 
 	while (glfwWindowShouldClose(window) == 0 && glfwGetKey(window, GLFW_KEY_ESCAPE) != GLFW_PRESS)
 	{
-		scene->render(camera, dirLight);
-		
+		scene->render(camera, dirLight, defaultFBO);
+		bloom.process(textures);
 		camera.update();
 		dirLight.updatePosition();
 		glfwSwapBuffers(window);

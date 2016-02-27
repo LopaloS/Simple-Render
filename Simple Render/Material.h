@@ -1,4 +1,4 @@
-#include "stdafx.h"
+
 
 class Material
 {
@@ -8,7 +8,12 @@ class Material
 
 		GLuint getID();
 
+	protected:
+		GLuint loadShader(const char* name, GLenum type);
+		void linkProgram(GLuint vert, GLuint frag);
+
 	private:
+		static const string folder;
 		GLuint id;
-		void loadShader(const char*);
+		
 };

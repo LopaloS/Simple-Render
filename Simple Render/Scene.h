@@ -1,9 +1,7 @@
 #include "stdafx.h"
 #include "Libs\jsoncpp\json\json.h"
-#include "Material.h"
 #include "SkyboxObject.h"
 #include "MeshLoader.h"
-#include "FrameBufferObject.h"
 
 using namespace Json;
 
@@ -13,8 +11,8 @@ class Scene
 #define depthMapResolution 4096
 
 public:
-	Scene(int windowWidth, int windowHeight, char* pathToData);
-	void render(Camera camera, DirectionLight light);
+	Scene(int windowWidth, int windowHeight, char* pathToData, MeshLoader* meshLoader);
+	void render(Camera camera, DirectionLight light, FrameBufferObject defaultFBO);
 
 private:
 	int windowWidth;

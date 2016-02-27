@@ -1,11 +1,6 @@
 #include "stdafx.h"
 #include <gtc/matrix_access.hpp>
 
-Mesh::Mesh()
-{
-	
-}
-
 Mesh::Mesh(vector<vec3>* verts, vector<vec2>* uvs, vector<vec3>* normals)
 {
 	uvBufferID = 0;

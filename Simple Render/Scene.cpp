@@ -4,19 +4,19 @@
 #include <gtx/euler_angles.hpp>
 #include <glfw3.h>
 
-Scene::Scene(int windowWidth, int windowHeight, char* pathToData)
+Scene::Scene(int windowWidth, int windowHeight, char* pathToData, MeshLoader* meshLoader)
 {
 	this->windowWidth = windowWidth;
 	this->windowHeight = windowHeight;
+	this->meshLoader = meshLoader;
 
 	depthShaderID = Material("Depth.glsl").getID();
-	shadowFBO = new FrameBufferObject(depthMapResolution, depthMapResolution, false);
+	shadowFBO = new DepthFrameBufferObj(depthMapResolution, depthMapResolution);
 	
-	waterRefractFBO = new FrameBufferObject(windowWidth, windowHeight, true);
-	waterRefractDepthFBO = new FrameBufferObject(windowWidth, windowHeight, false);
-	waterReflectFBO = new FrameBufferObject(windowWidth, windowHeight, true);
+	waterRefractFBO = new ColorFrameBufferObj(windowWidth, windowHeight);
+	waterRefractDepthFBO = new DepthFrameBufferObj(windowWidth, windowHeight);
+	waterReflectFBO = new ColorFrameBufferObj(windowWidth, windowHeight);
 
-	meshLoader = new MeshLoader();
 	GLuint skyboxID = createSkybox();
     Reader jsonReader;
 	std::ifstream stream(pathToData);
@@ -113,7 +113,7 @@ GLuint Scene::createSkybox()
 	return cubemap.getID();
 }
 
-void Scene::render(Camera camera, DirectionLight light)
+void Scene::render(Camera camera, DirectionLight light, FrameBufferObject defaultFBO)
 {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	shadowPass(light);
@@ -135,7 +135,7 @@ void Scene::render(Camera camera, DirectionLight light)
 	camera.setReflectedViewMatrix(waterHeight);
 	mainPass(camera, light, clipPlane);
 
-	glBindFramebuffer(GL_FRAMEBUFFER, 0);
+	defaultFBO.activate();
 	glDisable(GL_CLIP_DISTANCE0);
 
 	camera.setNormalViewMatrix();

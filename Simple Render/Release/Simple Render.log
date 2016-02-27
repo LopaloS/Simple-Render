@@ -1,29 +1,6 @@
-﻿Построение начато 23.01.2016 18:17:45.
-     1>Проект "D:\Simple Render\Simple Render\Simple Render.vcxproj" в узле 2 (целевые объекты Build).
-     1>ClCompile:
-         D:\Programs\Visual Studio 2012\VC\bin\CL.exe /c /I"D:\Simple Render\Simple Render\Libs\FreeImage_x32" /I"D:\Simple Render\Simple Render\Libs\glm-0.9.6.3\glm\glm" /I"D:\Simple Render\Simple Render\Libs\glfw-3.1.1.bin.WIN32\include\GLFW" /I"D:\Simple Render\Simple Render\Libs\glew-1.12.0\include" /Zi /nologo /W3 /WX- /sdl /O2 /Oi /Oy- /GL /D WIN32 /D NDEBUG /D _CONSOLE /D _CRT_SECURE_NO_WARNINGS /D _UNICODE /D UNICODE /Gm- /EHsc /MT /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt "Simple Render.cpp"
-         Simple Render.cpp
-     1>d:\simple render\simple render\stdafx.h(14): warning C4067: непредвиденные лексемы за директивой препроцессора, требуется newline
-       Link:
-         D:\Programs\Visual Studio 2012\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\Simple Render\Release\Simple Render.exe" /INCREMENTAL:NO /NOLOGO /LIBPATH:"D:\Simple Render\Simple Render\Libs\glfw-3.1.1.bin.WIN32\lib-vc2012" /LIBPATH:"D:\Simple Render\Simple Render\Libs\FreeImage_x32" /LIBPATH:"D:\Simple Render\Simple Render\Libs\glew-1.12.0\lib\Release\Win32" opengl32.lib glu32.lib glew32.lib glfw3.lib FreeImage.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /NODEFAULTLIB:LIBCMT.lib /ASSEMBLYMODULE:LIBCMT.lib /ASSEMBLYRESOURCE:LIBCMT.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:\Simple Render\Release\Simple Render.pdb" /SUBSYSTEM:CONSOLE /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\Simple Render\Release\Simple Render.lib" /MACHINE:X86 /SAFESEH Release\Camera.obj
-         Release\DirectionLight.obj
-         Release\CubeMap.obj
-         Release\FrameBufferObject.obj
-         Release\jsoncpp.obj
-         Release\Material.obj
-         Release\Mesh.obj
-         Release\MeshLoader.obj
-         Release\Scene.obj
-         Release\SceneObject.obj
-         "Release\Simple Render.obj"
-         Release\SkyboxObject.obj
-         Release\stdafx.obj
-         Release\Texture.obj
-         Создание кода
-         Создание кода завершено
-         Simple Render.vcxproj -> D:\Simple Render\Release\Simple Render.exe
-     1>Построение проекта "D:\Simple Render\Simple Render\Simple Render.vcxproj" завершено (целевые объекты Build).
-
-Построение успешно завершено.
-
-Затраченное время: 00:00:02.50
+﻿  Generating code
+  0 of 2330 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    0 functions had inline decision re-evaluated but remain unchanged
+  Finished generating code
+  Simple Render.vcxproj -> D:\Simple Render\Release\Simple Render.exe
