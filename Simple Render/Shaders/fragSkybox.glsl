@@ -1,11 +1,11 @@
 #version 330 core
 
 in vec3 uv;
-out vec3 color;
+out vec4 color;
 
 uniform samplerCube sampler;
 
 void main()
 {
-	color = texture(sampler, uv).rgb;
+	color = texture(sampler, uv);
 }

@@ -15,5 +15,6 @@ class Material
 	private:
 		static const string folder;
 		GLuint id;
-		
+		static GLuint vertLibId;
+		static GLuint fragLibId;
 };

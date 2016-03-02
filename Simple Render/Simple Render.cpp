@@ -44,7 +44,8 @@ int main(void)
 
 	ColorFrameBufferObj defaultFBO(windowWidth, windowHeight);
 	map<string, GLuint> textures;
-	textures.insert(pair<string, GLuint>("colorTex", defaultFBO.getTextureID()));
+	textures["colorTex"] = defaultFBO.getTextureID();
+
 	Mesh* quad = meshLoader->loadMesh("Quad.obj");
 	Bloom bloom(windowWidth, windowHeight, quad);
 

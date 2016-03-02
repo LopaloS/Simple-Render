@@ -62,8 +62,13 @@ void SceneObject::renderShadow(GLuint depthShaderID, DirectionLight light)
 
 void SceneObject::renderDepth(GLuint depthShaderID, mat4 viewProj, vec4 clipPlane)
 {
-	glUniformMatrix4fv(glGetUniformLocation(depthShaderID, "viewProj"), 1,GL_FALSE, &viewProj[0][0]);
+	glActiveTexture(GL_TEXTURE0);
+	glBindTexture(GL_TEXTURE_2D, texures["mainTex"]);
+	glUniform1i(glGetUniformLocation(shaderID, "mainTex"), 0);
+
+	glUniformMatrix4fv(glGetUniformLocation(depthShaderID, "viewProj"), 1, GL_FALSE, &viewProj[0][0]);
 	glUniformMatrix4fv(glGetUniformLocation(depthShaderID, "model"), 1,GL_FALSE, &transMat[0][0]);
-	glUniform4f(glGetUniformLocation(depthShaderID, "clipPlane"), clipPlane.x, clipPlane.y, clipPlane.z, clipPlane.w);
+	glUniform4fv(glGetUniformLocation(depthShaderID, "clipPlane"), 1, &clipPlane[0]);
+
 	mesh->draw();
 }

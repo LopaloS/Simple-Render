@@ -3,15 +3,23 @@
 #include <vector>
 
 const string Material::folder = "Shaders/";
+GLuint Material::vertLibId = 0;
+GLuint Material::fragLibId = 0;
 
 Material::Material() {}
 
 Material::Material(string shaderName)
 {
-	string vertName("vert");
+	string vertName("Vert");
 	vertName += shaderName;
-	string fragmentName("frag");
+	string fragmentName("Frag");
 	fragmentName += shaderName;
+
+	if (vertLibId == 0) 
+	{
+		vertLibId = loadShader("VertLibrary.glsl", GL_VERTEX_SHADER);
+		fragLibId = loadShader("FragLibrary.glsl", GL_FRAGMENT_SHADER);
+	}
 
 	GLuint vertexShaderID = loadShader(vertName.c_str(), GL_VERTEX_SHADER);
 	GLuint fragmentShaderID = loadShader(fragmentName.c_str(), GL_FRAGMENT_SHADER);
@@ -76,7 +84,9 @@ void Material::linkProgram(GLuint vert, GLuint frag)
 
 	printf("Linking program\n");
 	id = glCreateProgram();
+	glAttachShader(id, vertLibId);
 	glAttachShader(id, vert);
+	glAttachShader(id, fragLibId);
 	glAttachShader(id, frag);
 	glLinkProgram(id);
 
@@ -90,6 +100,6 @@ void Material::linkProgram(GLuint vert, GLuint frag)
 		printf("%s\n", &ProgramErrorMessage[0]);
 	}
 
-	glDeleteShader(vert);
-	glDeleteShader(frag);
+	/*glDeleteShader(vert);
+	glDeleteShader(frag);*/
 }

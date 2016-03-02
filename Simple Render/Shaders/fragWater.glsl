@@ -5,7 +5,6 @@ in vec2 uv2;
 in mat3 TBN;
 in vec3 fragWorldPos;
 in vec4 fragDevicePos;
-
 out vec4 color;
 
 uniform sampler2D normalTex;
@@ -18,14 +17,7 @@ uniform vec3 viewPos;
 vec4 waterColor = vec4(0f,0.1f,0.1f,1);
 float distortion = 0.1f;
 
-
-float near = 0.3; 
-float far  = 1000.0; 
-
-float linearizeDepth(float depth) 
-{
-	return (2.0 * near * far) / (far + near - depth * (far - near));
-}
+float linearizeDepth(float depth);
 
 void main()
 {	
@@ -41,10 +33,7 @@ void main()
 	uvOffset *= distortion;
 	
 	vec2 fragScreenPos = fragDevicePos.xy / fragDevicePos.w;
-	
-	
 	fragScreenPos = fragScreenPos / 2 + 0.5f;
-	
 	
 	float waterDepth = gl_FragCoord.z;
 	waterDepth = linearizeDepth(waterDepth);;

@@ -3,12 +3,13 @@
 in vec2 uv;
 out vec3 hdrColor;
 
-uniform sampler2D colorTex;
 uniform sampler2D brightnessTex;
+uniform sampler2D colorTex;
+
 
 void main()
 {
-	vec3 brightness = texture2D(brightnessTex, uv).rgb;
-	hdrColor = texture2D(colorTex, uv).rgb;
-	hdrColor += brightness;
+	vec3 brightness = texture(brightnessTex, uv).rgb;
+	hdrColor = texture(colorTex, uv).rgb;
+	//hdrColor += brightness;
 }
