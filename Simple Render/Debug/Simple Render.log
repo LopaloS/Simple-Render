@@ -1,3 +1,23 @@
-﻿  Material.cpp
+﻿  Bloom.cpp
 d:\simple render\simple render\stdafx.h(17): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  Generating Code...
+  Skipping... (no relevant changes detected)
+  stdafx.cpp
+  Texture.cpp
+  SkyboxObject.cpp
+  Simple Render.cpp
+  SceneObject.cpp
+  Scene.cpp
+  MeshLoader.cpp
+  Mesh.cpp
+  Material.cpp
+  ImageMaterial.cpp
+  ImageEffect.cpp
+  FrameBufferObject.cpp
+  DirectionLight.cpp
+  DepthFrameBufferObj.cpp
+  CubeMap.cpp
+  ColorFrameBufferObj.cpp
+  Camera.cpp
+LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
   Simple Render.vcxproj -> D:\Simple Render\Debug\Simple Render.exe

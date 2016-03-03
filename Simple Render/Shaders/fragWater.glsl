@@ -56,8 +56,7 @@ void main()
 	
 	vec3 halfWayDir = normalize(viewDir + lightDir);
 	float spec = pow((max(0.0f, dot(normal, halfWayDir))), 32);
-	vec3 specular = color.rgb * spec;
+	vec3 specular = vec3(1) * spec;
 	
-	color.rgb = color.rgb + specular;
-	color.a = underwaterDepth;
+	color.rgb += specular;
 }

@@ -10,7 +10,6 @@ uniform sampler2D mainTex;
 uniform vec3 lightDir;
 uniform vec3 viewPos;
 
-float getShadow();
 void calcBlinnPhongLight(vec3 normal, float shine);
 
 void main()

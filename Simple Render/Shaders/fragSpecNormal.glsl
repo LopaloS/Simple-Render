@@ -10,7 +10,6 @@ uniform sampler2D mainTex;
 uniform sampler2D normalTex;
 uniform sampler2D specularTex;
 
-float getShadow();
 void calcBlinnPhongLight(vec3 normal, float shine);
 
 void main()

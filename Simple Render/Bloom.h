@@ -7,7 +7,7 @@ class Bloom : public ImageEffect
 		void process(map<string, GLuint> inTextures);
 
 	private:
-		int iterations = 10;
+		int iterations = 20;
 		GLuint brightnessShaderID;
 		GLuint blurShaderID;
 		vector<FrameBufferObject*> pingPongFBO;

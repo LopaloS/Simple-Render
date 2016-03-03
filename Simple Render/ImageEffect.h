@@ -14,7 +14,7 @@ class ImageEffect
 		FrameBufferObject* colorFBO;
 		ImageEffect* imageEffect;
 
-		void activateTextures(map<string, GLuint> inTextures);
-		void draw(map<string, GLuint> inTextures);
+		void activateTextures(GLuint shaderID, map<string, GLuint> inTextures);
+		void draw(GLuint shaderID, map<string, GLuint> inTextures);
 };
 

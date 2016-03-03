@@ -5,7 +5,7 @@ out vec3 hdrColor;
 
 uniform sampler2D colorTex;
 uniform bool horizontal;
-uniform float weight[5] = float[] (0.227027, 0.1945946, 0.1216216, 0.054054, 0.016216);						   
+uniform float weight[16] = float[] (0.132368, 0.125279,	0.106209, 0.080656,	0.054865, 0.033431,	0.018246, 0.00892, 0.003906, 0.001532, 0.000538, 0.000169, 0.000048, 0.000012, 0.000003, 0.000001);					   
 
 void main()
 {
@@ -14,7 +14,7 @@ void main()
 	vec2 dir = horizontal ? vec2(1,0) : vec2(0,1);
 	
 	vec2 offset;
-	for(int i = 1; i < 5; i++)
+	for(int i = 1; i < 15; i++)
 	{
 		offset = dir * i * texOffset;
 		hdrColor += texture(colorTex, uv + offset).rgb * weight[i];

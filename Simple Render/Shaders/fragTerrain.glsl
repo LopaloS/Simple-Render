@@ -13,7 +13,6 @@ uniform sampler2D brickNormalTex;
 uniform sampler2D brickSpecularTex;
 uniform sampler2D maskTex;
 
-float getShadow();
 void calcBlinnPhongLight(vec3 normal, float shine);
 
 void main()

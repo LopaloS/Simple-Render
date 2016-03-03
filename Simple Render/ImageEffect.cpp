@@ -25,7 +25,7 @@ void ImageEffect::process(map<string, GLuint> inTextures)
 		colorFBO->activate();
 
 	glUseProgram(shaderID);
-	draw(inTextures);
+	draw(shaderID, inTextures);
 
 	if(imageEffect != NULL)
 	{
@@ -34,7 +34,7 @@ void ImageEffect::process(map<string, GLuint> inTextures)
 	}
 }
 
-void ImageEffect::activateTextures(map<string, GLuint> inTextures)
+void ImageEffect::activateTextures(GLuint shaderID, map<string, GLuint> inTextures)
 {
 	GLuint curTexture = GL_TEXTURE0;
 	GLuint uniformLocation = 0;
@@ -49,8 +49,8 @@ void ImageEffect::activateTextures(map<string, GLuint> inTextures)
 	}
 }
 
-void ImageEffect::draw(map<string, GLuint> inTextures)
+void ImageEffect::draw(GLuint shaderID, map<string, GLuint> inTextures)
 {
-	activateTextures(inTextures);
+	activateTextures(shaderID, inTextures);
 	quad->draw();
 }

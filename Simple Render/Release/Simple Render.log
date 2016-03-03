@@ -1,6 +1,52 @@
-﻿  Generating code
-  0 of 2330 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
-    0 functions were new in current compilation
-    0 functions had inline decision re-evaluated but remain unchanged
+﻿  Bloom.cpp
+d:\simple render\simple render\stdafx.h(17): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  Camera.cpp
+d:\simple render\simple render\stdafx.h(17): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+Camera.cpp(12): warning C4305: '=': truncation from 'double' to 'float'
+Camera.cpp(19): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+Camera.cpp(26): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+Camera.cpp(27): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
+  ColorFrameBufferObj.cpp
+d:\simple render\simple render\stdafx.h(17): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  DepthFrameBufferObj.cpp
+d:\simple render\simple render\stdafx.h(17): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  DirectionLight.cpp
+d:\simple render\simple render\stdafx.h(17): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  CubeMap.cpp
+d:\simple render\simple render\stdafx.h(17): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  FrameBufferObject.cpp
+d:\simple render\simple render\stdafx.h(17): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  ImageEffect.cpp
+d:\simple render\simple render\stdafx.h(17): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  ImageMaterial.cpp
+d:\simple render\simple render\stdafx.h(17): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  jsoncpp.cpp
+  Material.cpp
+d:\simple render\simple render\stdafx.h(17): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  Mesh.cpp
+d:\simple render\simple render\stdafx.h(17): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+Mesh.cpp(41): warning C4018: '<': signed/unsigned mismatch
+  MeshLoader.cpp
+d:\simple render\simple render\stdafx.h(17): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+MeshLoader.cpp(87): warning C4018: '<': signed/unsigned mismatch
+  Scene.cpp
+d:\simple render\simple render\stdafx.h(17): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+Scene.cpp(41): warning C4800: 'const char *': forcing value to bool 'true' or 'false' (performance warning)
+Scene.cpp(50): warning C4018: '<': signed/unsigned mismatch
+  SceneObject.cpp
+d:\simple render\simple render\stdafx.h(17): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+SceneObject.cpp(46): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+  Simple Render.cpp
+d:\simple render\simple render\stdafx.h(17): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  SkyboxObject.cpp
+d:\simple render\simple render\stdafx.h(17): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  stdafx.cpp
+d:\simple render\simple render\stdafx.h(17): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  Texture.cpp
+d:\simple render\simple render\stdafx.h(17): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  Generating code
+  1123 of 2432 functions (46.2%) were compiled, the rest were copied from previous compilation.
+    107 functions were new in current compilation
+    80 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   Simple Render.vcxproj -> D:\Simple Render\Release\Simple Render.exe

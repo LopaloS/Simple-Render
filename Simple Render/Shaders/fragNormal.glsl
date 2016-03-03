@@ -7,7 +7,6 @@ out vec4 color;
 uniform sampler2D mainTex;
 uniform sampler2D normalTex;
 
-float getShadow();
 void calcBlinnPhongLight(vec3 normal, float shine);
 
 void main()
