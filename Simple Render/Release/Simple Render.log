@@ -1,5 +1,8 @@
 ﻿  Bloom.cpp
 d:\simple render\simple render\stdafx.h(17): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+Bloom.cpp(6): warning C4244: '*=': conversion from 'const float' to 'GLsizei', possible loss of data
+Bloom.cpp(7): warning C4244: '*=': conversion from 'const float' to 'GLsizei', possible loss of data
+Bloom.cpp(19): warning C4244: 'argument': conversion from 'float' to 'GLsizei', possible loss of data
   Camera.cpp
 d:\simple render\simple render\stdafx.h(17): warning C4067: unexpected tokens following preprocessor directive - expected a newline
 Camera.cpp(12): warning C4305: '=': truncation from 'double' to 'float'
@@ -45,8 +48,6 @@ d:\simple render\simple render\stdafx.h(17): warning C4067: unexpected tokens fo
   Texture.cpp
 d:\simple render\simple render\stdafx.h(17): warning C4067: unexpected tokens following preprocessor directive - expected a newline
   Generating code
-  1123 of 2432 functions (46.2%) were compiled, the rest were copied from previous compilation.
-    107 functions were new in current compilation
-    80 functions had inline decision re-evaluated but remain unchanged
+  All 2432 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
   Finished generating code
   Simple Render.vcxproj -> D:\Simple Render\Release\Simple Render.exe

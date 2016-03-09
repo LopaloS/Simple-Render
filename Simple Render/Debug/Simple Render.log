@@ -1,11 +1,17 @@
 ﻿  Bloom.cpp
 d:\simple render\simple render\stdafx.h(17): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+d:\simple render\simple render\bloom.cpp(6): warning C4244: '*=': conversion from 'float' to 'GLsizei', possible loss of data
+d:\simple render\simple render\bloom.cpp(7): warning C4244: '*=': conversion from 'float' to 'GLsizei', possible loss of data
+d:\simple render\simple render\bloom.cpp(19): warning C4244: 'argument': conversion from 'float' to 'GLsizei', possible loss of data
+  Generating Code...
+  Compiling...
+  Simple Render.cpp
+d:\simple render\simple render\stdafx.h(17): warning C4067: unexpected tokens following preprocessor directive - expected a newline
   Generating Code...
   Skipping... (no relevant changes detected)
   stdafx.cpp
   Texture.cpp
   SkyboxObject.cpp
-  Simple Render.cpp
   SceneObject.cpp
   Scene.cpp
   MeshLoader.cpp

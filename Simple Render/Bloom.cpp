@@ -3,6 +3,9 @@
 Bloom::Bloom(GLsizei screenWidth, GLsizei screenHeight, Mesh* quad) 
 	: ImageEffect(screenWidth, screenHeight, quad, ImageMaterial("Bloom.glsl").getID())
 {
+	screenWidth *= sizeOfScreen;
+	screenHeight *= sizeOfScreen;
+
 	brightnessShaderID = ImageMaterial("Brightness.glsl").getID();
 	blurShaderID = ImageMaterial("Blur.glsl").getID();
 
@@ -13,6 +16,8 @@ Bloom::Bloom(GLsizei screenWidth, GLsizei screenHeight, Mesh* quad)
 
 void Bloom::process(map<string, GLuint> inTextures)
 {
+	glViewport(0, 0, screenWidth * sizeOfScreen, screenHeight * sizeOfScreen);
+
 	colorFBO->activate();
 	glUseProgram(brightnessShaderID);
 	draw(brightnessShaderID, inTextures);
@@ -34,6 +39,7 @@ void Bloom::process(map<string, GLuint> inTextures)
 		textures["colorTex"] = currentFBO->getTextureID();
 		horizontal = !horizontal;
 	}
-	
+
+	glViewport(0, 0, screenWidth , screenHeight);
 	ImageEffect::process(inTextures);
 }

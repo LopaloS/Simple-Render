@@ -9,11 +9,18 @@ d:\simple render\simple render\release\meshloader.obj
 d:\simple render\simple render\release\mesh.obj
 d:\simple render\simple render\release\material.obj
 d:\simple render\simple render\release\jsoncpp.obj
+d:\simple render\simple render\release\imagematerial.obj
+d:\simple render\simple render\release\imageeffect.obj
 d:\simple render\simple render\release\framebufferobject.obj
 d:\simple render\simple render\release\cubemap.obj
 d:\simple render\simple render\release\directionlight.obj
+d:\simple render\simple render\release\depthframebufferobj.obj
+d:\simple render\simple render\release\colorframebufferobj.obj
 d:\simple render\simple render\release\camera.obj
+d:\simple render\simple render\release\bloom.obj
 d:\simple render\release\simple render.exe
+d:\simple render\release\simple render.ipdb
+d:\simple render\release\simple render.iobj
 d:\simple render\release\simple render.pdb
 d:\simple render\simple render\release\simple render.tlog\cl.command.1.tlog
 d:\simple render\simple render\release\simple render.tlog\cl.read.1.tlog
