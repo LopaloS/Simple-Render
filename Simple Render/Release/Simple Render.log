@@ -1,8 +1,11 @@
 ﻿  Bloom.cpp
 d:\simple render\simple render\stdafx.h(17): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-Bloom.cpp(6): warning C4244: '*=': conversion from 'const float' to 'GLsizei', possible loss of data
-Bloom.cpp(7): warning C4244: '*=': conversion from 'const float' to 'GLsizei', possible loss of data
-Bloom.cpp(19): warning C4244: 'argument': conversion from 'float' to 'GLsizei', possible loss of data
+Bloom.cpp(9): warning C4244: '*=': conversion from 'const float' to 'GLsizei', possible loss of data
+Bloom.cpp(10): warning C4244: '*=': conversion from 'const float' to 'GLsizei', possible loss of data
+Bloom.cpp(21): warning C4244: 'argument': conversion from 'float' to 'GLsizei', possible loss of data
+  Blur.cpp
+d:\simple render\simple render\stdafx.h(17): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+Blur.cpp(22): warning C4018: '<': signed/unsigned mismatch
   Camera.cpp
 d:\simple render\simple render\stdafx.h(17): warning C4067: unexpected tokens following preprocessor directive - expected a newline
 Camera.cpp(12): warning C4305: '=': truncation from 'double' to 'float'
@@ -47,7 +50,13 @@ d:\simple render\simple render\stdafx.h(17): warning C4067: unexpected tokens fo
 d:\simple render\simple render\stdafx.h(17): warning C4067: unexpected tokens following preprocessor directive - expected a newline
   Texture.cpp
 d:\simple render\simple render\stdafx.h(17): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  Compiling...
+  TiltShift.cpp
+d:\simple render\simple render\stdafx.h(17): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+TiltShift.cpp(6): warning C4244: '*=': conversion from 'const float' to 'GLsizei', possible loss of data
+TiltShift.cpp(7): warning C4244: '*=': conversion from 'const float' to 'GLsizei', possible loss of data
+TiltShift.cpp(14): warning C4244: 'argument': conversion from 'float' to 'GLsizei', possible loss of data
   Generating code
-  All 2432 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  All 2438 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
   Finished generating code
   Simple Render.vcxproj -> D:\Simple Render\Release\Simple Render.exe

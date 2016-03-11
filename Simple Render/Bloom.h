@@ -10,6 +10,5 @@ class Bloom : public ImageEffect
 		const float sizeOfScreen = 0.5;
 		const int iterations = 10;
 		GLuint brightnessShaderID;
-		GLuint blurShaderID;
-		vector<FrameBufferObject*> pingPongFBO;
+		Blur* blur;
 };

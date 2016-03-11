@@ -95,6 +95,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Bloom.h" />
+    <ClInclude Include="Blur.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="ColorFrameBufferObj.h" />
     <ClInclude Include="CubeMap.h" />
@@ -113,9 +114,11 @@
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="Texture.h" />
+    <ClInclude Include="TiltShift.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Bloom.cpp" />
+    <ClCompile Include="Blur.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="ColorFrameBufferObj.cpp" />
     <ClCompile Include="DepthFrameBufferObj.cpp" />
@@ -134,6 +137,7 @@
     <ClCompile Include="SkyboxObject.cpp" />
     <ClCompile Include="stdafx.cpp" />
     <ClCompile Include="Texture.cpp" />
+    <ClCompile Include="TiltShift.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

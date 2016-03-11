@@ -21,6 +21,8 @@
 #include "FrameBufferObject.h"
 #include "DepthFrameBufferObj.h"
 #include "ColorFrameBufferObj.h"
+#include "Blur.h"
 #include "ImageEffect.h"
 #include "Bloom.h"
+#include "TiltShift.h"
 

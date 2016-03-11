@@ -29,7 +29,7 @@ void ImageEffect::process(map<string, GLuint> inTextures)
 
 	if(imageEffect != NULL)
 	{
-		inTextures["color"] = colorFBO->getTextureID();
+		inTextures["colorTex"] = colorFBO->getTextureID();
 		imageEffect->process(inTextures);
 	}
 }
