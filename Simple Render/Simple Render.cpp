@@ -48,7 +48,7 @@ int main(void)
 
 	Mesh* quad = meshLoader->loadMesh("Quad.obj");
 	Bloom bloom(windowWidth, windowHeight, quad);
-	TiltShift tiltShift(windowWidth, windowHeight, quad);
+	ImageEffect tiltShift(windowWidth, windowHeight, quad, (new ImageMaterial("TiltShift.glsl"))->getID());
 	bloom.setImageEffect(&tiltShift);
 
 	while (glfwWindowShouldClose(window) == 0 && glfwGetKey(window, GLFW_KEY_ESCAPE) != GLFW_PRESS)

@@ -75,9 +75,6 @@
     <ClInclude Include="DepthFrameBufferObj.h">
       <Filter>Заголовочные файлы</Filter>
     </ClInclude>
-    <ClInclude Include="TiltShift.h">
-      <Filter>Заголовочные файлы</Filter>
-    </ClInclude>
     <ClInclude Include="Blur.h">
       <Filter>Заголовочные файлы</Filter>
     </ClInclude>
@@ -138,9 +135,6 @@
       <Filter>Файлы исходного кода</Filter>
     </ClCompile>
     <ClCompile Include="DepthFrameBufferObj.cpp">
-      <Filter>Файлы исходного кода</Filter>
-    </ClCompile>
-    <ClCompile Include="TiltShift.cpp">
       <Filter>Файлы исходного кода</Filter>
     </ClCompile>
     <ClCompile Include="Blur.cpp">

@@ -114,7 +114,6 @@
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="Texture.h" />
-    <ClInclude Include="TiltShift.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Bloom.cpp" />
@@ -137,7 +136,6 @@
     <ClCompile Include="SkyboxObject.cpp" />
     <ClCompile Include="stdafx.cpp" />
     <ClCompile Include="Texture.cpp" />
-    <ClCompile Include="TiltShift.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
